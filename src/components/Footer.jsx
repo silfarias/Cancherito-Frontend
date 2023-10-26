@@ -4,7 +4,7 @@ export const Footer = () => {
     <div className="row justify-content-center align-items-center">
 
       <div className="col-md-3 col-12 text-center" id="imgcancha">
-        <a className="navbar-brand" href="#caja-principal"><img src="/img/cancherito.png" alt="logo" /></a>
+        <a className="navbar-brand" href="#caja-principal"><img src="/img/logo_cancheritooo.png" alt="logo" /></a>
       </div>
 
 
