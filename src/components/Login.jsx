@@ -31,13 +31,13 @@ export const FormLogin = () => {
   
         <form className="mt-4" id="formLogin" method="POST">
     
-            <label>Ingrese su correo electronico:</label>
+            <label>Correo electronico:</label>
             <div className="mt-1 form-field d-flex align-items-center">
                 <span className="far fa-user"></span>
                 <input type="email" name="email" id="email" placeholder="name@example.com" required/>
             </div>
             
-            <label>Ingrese su contraseña:</label>
+            <label>Contraseña:</label>
             <div className="mt-1 form-field d-flex align-items-center">
                 <span className="fas fa-key"></span>
                 <input type="password" name="password" id="contraseña" placeholder="Contraseña" required/>

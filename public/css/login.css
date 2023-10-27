@@ -52,6 +52,11 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.562);
 }
 
+#formNewUser {
+    justify-content: center;
+    padding: 0;
+}
+
 .logo {
     object-fit: cover;
     margin: 0 auto;
@@ -78,9 +83,18 @@ img {
     border: none;
     outline: none;
     background: none;
-    font-size: 1.2rem;
+    font-size: 13px;
     color: #666;
     padding: 10px 15px 10px 10px;
+}
+
+form label, input::placeholder {
+    font-size: 14px;
+}
+
+
+label {
+    font-size: 14px;
 }
 
 .wrapper .form-field {
@@ -113,10 +127,7 @@ p {
     color: #ffffff;
 }
 
-form label {
-    color: black;
-    font-size: 13px;
-}
+
 
 .logo {
     object-fit: cover;

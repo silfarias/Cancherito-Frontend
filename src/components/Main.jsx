@@ -62,8 +62,13 @@ const Cards = () => {
               <div className="card-body">
                 <h6 className="card-title">The Futbol Factory</h6>
                 <div className="d-flex justify-content-between align-items-center">
-                  <div className="btn-group">
-                  </div>
+                <div>
+                  <i className="bi bi-star-fill star-dest"></i>
+                  <i className="bi bi-star-fill star-dest"></i>
+                  <i className="bi bi-star-fill star-dest"></i>
+                  <i className="bi bi-star-fill star-dest"></i>
+                  <i className="bi bi-star-fill star-dest"></i>
+                </div>
                   <a href="canchas.html" className="text-body-secondary">Más info</a>
                 </div>
               </div>
@@ -76,7 +81,12 @@ const Cards = () => {
               <div className="card-body">
                 <h6 className="card-title">Chacra 8</h6>
                 <div className="d-flex justify-content-between align-items-center">
-                  <div className="btn-group">
+                  <div>
+                    <i className="bi bi-star-fill star-dest"></i>
+                    <i className="bi bi-star-fill star-dest"></i>
+                    <i className="bi bi-star-fill star-dest"></i>
+                    <i className="bi bi-star-fill star-dest"></i>
+                    <i className="bi bi-star-fill star-dest"></i>
                   </div>
                   <a href="#otra-seccion" className="text-body-secondary">Más info</a>
                 </div>
@@ -90,7 +100,12 @@ const Cards = () => {
               <div className="card-body">
                 <h6 className="card-title">Maracaná</h6>
                 <div className="d-flex justify-content-between align-items-center">
-                  <div className="btn-group">
+                  <div>
+                    <i className="bi bi-star-fill star-dest"></i>
+                    <i className="bi bi-star-fill star-dest"></i>
+                    <i className="bi bi-star-fill star-dest"></i>
+                    <i className="bi bi-star-fill star-dest"></i>
+                    <i className="bi bi-star-fill star-dest"></i>
                   </div>
                   <a href="#otra-seccion" className="text-body-secondary">Más info</a>
                 </div>

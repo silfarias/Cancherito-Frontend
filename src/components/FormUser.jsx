@@ -23,6 +23,7 @@ export const Botonera = () => {
 
 export const FormUser = () => {
   return (
+    <>
     <div className="formulario">
         <div className="logo">
             <img className="img-fluid" src="/img/cancherito.png" alt="cancherito"/>
@@ -30,6 +31,7 @@ export const FormUser = () => {
         
         <div className="mx-auto">
             <form id="formNewUser" action="/register" method="POST" className="p-3 mt-2 " />
+                    <p className="text-center text-primary-emphasis">Información Personal</p>
                 <div className="row">
                     <div className="col col-md-6 col-sm-12 mb-3">  
                         <label htmlFor="name" className="form-label">Nombre</label>
@@ -61,6 +63,10 @@ export const FormUser = () => {
                         <input type="password" className="form-control" id="confirmPassword" name="confirmPassword" placeholder="Password"/>
                     </div>
                 </div>
+                <div className="row">
+                    <p className="text-center text-primary-emphasis"></p>
+
+                </div>
     
                 <div className="row">
                     <div className="col d-flex justify-content-end">
@@ -71,5 +77,6 @@ export const FormUser = () => {
             <form/>
         </div>
     </div>
+    </>
   )
 }

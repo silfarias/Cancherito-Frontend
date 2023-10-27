@@ -1,12 +1,13 @@
 import React, { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
-import App  from './App.jsx'
-import '../public/css/index.css';
+import { AppRouter } from './routers/AppRouter.jsx';
+import '../public/css/login.css'
+import '../public/css/home.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
   <StrictMode>
-    <App />
+    <AppRouter />
   </StrictMode>
 )

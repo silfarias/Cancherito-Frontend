@@ -251,3 +251,22 @@ p {
   display: flex; 
   align-items: center;
 }
+
+.star-dest {
+  color: #f7f31b;
+  font-size: 20px;
+  margin-right: 3px;
+}
+
+/*Estrellas de calificación*/
+.star {
+  font-size: 20px;
+  /*color: #bbb;*/
+  transition: color 0.03s;
+  cursor: pointer;
+}
+
+.star:hover,
+.star.checked {
+  color: #f7f31b;
+}
