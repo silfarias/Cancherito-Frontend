@@ -35,7 +35,7 @@ const Centro = () => {
                   className="indexstyled__StyledInput-sc-ctjx00-2 kvLJpR"
                 />
               </div>
-              <a href="#caja-card">
+              <a href="/canchas">
                 <button type="button" 
                   className="btn btn-lg explorebtn">VER CANCHAS
                 </button>
@@ -121,7 +121,9 @@ const Cards = () => {
 const Button = () => {
   return (
     <div id="mas-canchas">
+      <a href="/canchas">
       <button className="btn">Mas canchas</button>
+      </a>
     </div>
   ) 
 }

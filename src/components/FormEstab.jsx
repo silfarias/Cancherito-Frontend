@@ -5,7 +5,7 @@ export const FormEstab = () => {
     <>
     <Botonera />
     <div className="text-center">
-        <h4 className="m-1 mx-auto">Registra tu Establecimiento</h4>
+        <h5 className="m-1 mx-auto text-primary-emphasis">Registra tu Establecimiento</h5>
     </div>
 
 
@@ -18,12 +18,14 @@ export const FormEstab = () => {
             <form encType="multipart/form-data"  id="formNewEstab" className="p-3 mt-2 ">
                 <div className="row">
                     <div className="col col-md-6 col-sm-12 mb-3">  
-                        <label htmlFor="name" className="form-label">Nombre del Establecimiento</label>
+                        <label htmlFor="name" className="form-label">¿Cúal es el nombre del club?</label>
                         <input type="text" required={true} className="form-control" id="name" name="name" />
                     </div>
                     <div className="col col-md-6 col-sm-12 mb-3">  
-                        <label htmlFor="location" className="form-label">Localización</label>
-                        <input type="text" required={true} className="form-control" id="location" name="location" />
+                        <label htmlFor="location" className="form-label">Ubicación del Club</label>
+                        <div className="d-grid gap-2 col-6 mx-auto">
+                            <button className="" type="submit" required={true}>Marcar en el mapa</button>
+                        </div>
                     </div>
                 </div>
                 <div className="row">
