@@ -14,7 +14,8 @@ export const Navbar = () => {
               aria-label="Search" />
           </div>
         </form>
-        <div className="d-flex col-5 justify-content-beetween">
+        <div className="d-flex col justify-content-end">
+        <DropdownMenu />
           <a href="/login">
             <button className="btn" id="inicio-sesion">
               <svg xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +29,6 @@ export const Navbar = () => {
               </svg> Iniciar sesión
             </button>
           </a>
-          <DropdownMenu />
         </div>
       </div>
     </nav>
@@ -37,11 +37,11 @@ export const Navbar = () => {
 
 const DropdownMenu = () => {
   return (
-    <div className="dropdown">
+    <div className="dropdown" style={{ paddingRight: '10px'}}>
       <button className="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Mas...
       </button>
-      <ul className="dropdown-menu" style={{ maxWidth: '200px', overflow: 'hidden', marginRight: '10px' }}>
+      <ul className="dropdown-menu" style={{ maxWidth: '200px', overflow: 'hidden'}}>
         <a href="/register-client">
           <li><button className="dropdown-item" id="soft-clubes" type="button">Software Para clubes</button></li>
         </a>
