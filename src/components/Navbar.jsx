@@ -1,6 +1,6 @@
 export const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary" id="nav">
+    <nav className="navbar navbar-expand-lg bg-body-tertiary col-12" id="nav">
       <div className="container-fluid row" id="caja-principal">
         <div className="col-2" id="caja-logo">
           <a className="navbar-brand" href="/">
@@ -14,7 +14,7 @@ export const Navbar = () => {
               aria-label="Search" />
           </div>
         </form>
-        <div className="d-grid gap-2 d-md-flex justify-content-md-end col-4">
+        <div className="d-flex col-5 justify-content-beetween">
           <a href="/login">
             <button className="btn" id="inicio-sesion">
               <svg xmlns="http://www.w3.org/2000/svg"
@@ -28,10 +28,6 @@ export const Navbar = () => {
               </svg> Iniciar sesión
             </button>
           </a>
-          
-          <a href="/register-client"
-          ><button className="btn" id="soft-clubes">Software para clubes</button>
-          </a>
           <DropdownMenu />
         </div>
       </div>
@@ -39,16 +35,19 @@ export const Navbar = () => {
   )
 }
 
-export const DropdownMenu = () => {
+const DropdownMenu = () => {
   return (
     <div className="dropdown">
       <button className="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Mas...
       </button>
-      <ul className="dropdown-menu">
+      <ul className="dropdown-menu" style={{ maxWidth: '200px', overflow: 'hidden', marginRight: '10px' }}>
+        <a href="/register-client">
+          <li><button className="dropdown-item" id="soft-clubes" type="button">Software Para clubes</button></li>
+        </a>
         <li><button className="dropdown-item" type="button">Info Cancherito</button></li>
         {/*<li><button id="cerrar-sesion-btn" className="dropdown-item" type="button">Cerrar Sesión</button></li>*/}
       </ul>
     </div>
-  )
+  );
 }

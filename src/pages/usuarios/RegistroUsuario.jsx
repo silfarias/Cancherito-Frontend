@@ -1,5 +1,6 @@
-import { Botonera } from "../components/FormUser.jsx"
-import { FormUser } from "../components/FormUser.jsx"
+import { Botonera } from "../../components/FormUser.jsx"
+import { FormUser } from "../../components/FormUser.jsx"
+import './login.css'
 
 export const RegistroUsuario = () => {
     return (

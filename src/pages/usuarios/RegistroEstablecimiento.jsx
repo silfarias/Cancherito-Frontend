@@ -1,4 +1,5 @@
-import { FormEstab } from "../components/FormEstab.jsx";
+import { FormEstab } from "../../components/FormEstab.jsx";
+import './login.css';
 
 export const RegistroEstablecimiento = () => {
     return (

@@ -5,12 +5,12 @@ import {
 }
 from "react-router-dom";
 
-import { Inicio } from "../pages/Inicio.jsx";
-import { RegistroUsuario } from "../pages/RegistroUsuario";
-import { InicioSesion } from "../pages/InicioSesion";
-import { RegistroEstablecimiento } from "../pages/RegistroEstablecimiento";
-import { Canchas } from "../pages/Canchas.jsx";
-import { OneCancha } from "../pages/OneCancha.jsx";
+import { Inicio } from "../pages/canchas/Inicio.jsx";
+import { RegistroUsuario } from "../pages/usuarios/RegistroUsuario.jsx";
+import { InicioSesion } from "../pages/usuarios/InicioSesion.jsx";
+import { RegistroEstablecimiento } from "../pages/usuarios/RegistroEstablecimiento.jsx";
+import { Canchas } from "../pages/canchas/Canchas.jsx";
+import { OneCancha } from "../pages/canchas/OneCancha.jsx";
 
 
 export const AppRouter = () => {

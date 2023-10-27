@@ -8,6 +8,7 @@ function Reserva () {
                 <Horarios/>
             </div>
         </div>
+        <Comentarios/>
     </div>
     )
 
@@ -61,5 +62,16 @@ function Horarios () {
 
     )
 }
+
+function Comentarios() {
+    return (
+      <div className="form-floating d-flex align-items-center">
+        <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+        <label htmlFor="floatingTextarea">Dejar un comentario</label>
+        <button className="btn" style={{marginLeft: '10px'}} type="submit">Publicar</button>
+      </div>
+    );
+}
+  
 
 export default Reserva
