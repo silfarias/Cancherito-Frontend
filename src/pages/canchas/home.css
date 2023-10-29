@@ -28,6 +28,7 @@ footer {
   margin-top: 20px;
   background-image: linear-gradient(180deg,#0979b0,#004173);
   color: #fff;
+  font-size: 14px;
 }
 
 h1 {
@@ -44,9 +45,9 @@ h4 {
 }
 
 #caja-principal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #mas-canchas {
