@@ -1,18 +1,37 @@
-import { useState } from 'react';
-import { login } from '../apis/auth';
+import { useState, useNavigate } from 'react';
 function Login() {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+  
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-    const handleSubmit = async () => {
-        try {
-            const data = await login(email, password);
-            localStorage.setItem('token', JSON.stringify(data.token));
-            window.location.href = '/';
-        } catch (error) {
-            setError(error.message);
+      try {
+        const response = await fetch('http://localhost:4000/api/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, password }),
+        });
+  
+        if (!response.ok) {
+          throw new Error('La contraseña o el email son incorrectos');
         }
+  
+        const data = await response.json();
+  
+        localStorage.setItem('token', JSON.stringify(data.token));
+
+        navigate('/')
+
+      } catch (error) {
+        console.error(error);
+        alert('La contraseña o el email son incorrectos');
+        setError('La contraseña o el email son incorrectos');
+      }
     }
 
     return (
@@ -42,7 +61,7 @@ function Login() {
                 <img className="img-fluid" src="/img/cancherito.png" alt="cancherito" />
             </div>
 
-            <form className="mt-4" id="formLogin" method="POST">
+            <form onSubmit={handleSubmit} className="mt-4" id="formLogin" method="POST">
 
                 <label>Correo electronico:</label>
                 <div className="mt-1 form-field d-flex align-items-center">
@@ -73,8 +92,7 @@ function Login() {
                 <div className="mt-4" id="boton">
                     <button
                         type="submit"
-                        className="btn"
-                        onClick={handleSubmit}>
+                        className="btn">
                         Iniciar Sesion
                     </button>
                 </div>

@@ -1,8 +1,6 @@
-import { environments } from "../config/environments.js";
-
 export const login = async (email, password) => {
     try {
-        const response = await fetch(`${environments.API_URL}/login`, {
+        const response = await fetch('http://localhost:4000/api/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -11,11 +9,15 @@ export const login = async (email, password) => {
         })
 
         if (!response.ok) {
-            throw new Error('La DevComponentsio o el email son incorrectos');
+            throw new Error('La contraseña o el email son incorrectos');
         }
 
         return response.json()
     } catch (error) {
         throw error
     }
+}
+
+export const logout = async () => {
+    localStorage.removeItem('token');
 }

@@ -3,7 +3,6 @@ import { authReducer } from "../reducers/authReducer";
 
 export const AuthContext = createContext(null)
 
-
 export const AuthUser = ({children}) => {
     const [state, dispatch] = useReducer(authReducer, { isLogged: false })
 
