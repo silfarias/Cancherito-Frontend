@@ -12,9 +12,13 @@ export const login = async (email, password) => {
             throw new Error('La contraseña o el email son incorrectos');
         }
 
-        return response.json()
+        const data = await response.json()
+
+        localStorage.setItem('token', JSON.stringify(data.token))
+
     } catch (error) {
         throw error
+        alert('La contraseña o el email son incorrectos')
     }
 }
 

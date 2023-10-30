@@ -1,6 +1,9 @@
-import { useState, useNavigate } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 function Login() {
     const navigate = useNavigate();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -16,14 +19,14 @@ function Login() {
           },
           body: JSON.stringify({ email, password }),
         });
-  
+
         if (!response.ok) {
-          throw new Error('La contraseña o el email son incorrectos');
+            throw new Error('La contraseña o el email son incorrectos');
+        } else {
+            const data = await response.json();
+            alert(data.message);
+            localStorage.setItem('token', JSON.stringify(data.token));
         }
-  
-        const data = await response.json();
-  
-        localStorage.setItem('token', JSON.stringify(data.token));
 
         navigate('/')
 
@@ -61,7 +64,7 @@ function Login() {
                 <img className="img-fluid" src="/img/cancherito.png" alt="cancherito" />
             </div>
 
-            <form onSubmit={handleSubmit} className="mt-4" id="formLogin" method="POST">
+            <form onSubmit={handleSubmit} action='' className="mt-4" id="formLogin" method="POST">
 
                 <label>Correo electronico:</label>
                 <div className="mt-1 form-field d-flex align-items-center">

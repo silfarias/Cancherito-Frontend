@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
-import { logout, login } from "../apis/auth";
+import { logout } from '../apis/auth';
 
 export const Navbar = () => {
+
+
+  
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary col-12" id="nav">
       <div className="container-fluid row" id="caja-principal">
@@ -49,7 +51,13 @@ const DropdownMenu = () => {
           <li><button className="dropdown-item" id="soft-clubes" type="button">Software Para clubes</button></li>
         </a>
         <li><button className="dropdown-item" type="button">Info Cancherito</button></li>
-        <li><button id="cerrar-sesion-btn" className="dropdown-item" type="button">Cerrar Sesión</button></li>
+        <li>
+          <button 
+          id="cerrar-sesion-btn" 
+          className="dropdown-item" 
+          type="button"
+          onClick={logout}>
+            Cerrar Sesión</button></li>
       </ul>
     </div>
   );
