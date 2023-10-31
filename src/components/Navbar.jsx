@@ -1,9 +1,42 @@
-import { logout } from '../apis/auth';
+import { useState, useEffect } from "react";
+import { logout } from "../apis/auth";
+import { environments } from "../config/environments";
 
 export const Navbar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userName, setUserName] = useState('');
 
-
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsLoggedIn(true);
+      fetch(`${environments.API_URL}/api/auth/login`, {
+        headers: {
+          method: 'POST',
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+      })
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+          throw new Error('Error al obtener el usuario');
+        })
+        .then((data) => {
+          setUserName(data.name);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [setUserName]);
   
+  const handleLogout = () => {
+    logout();
+    setIsLoggedIn(false);
+  }
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary col-12" id="nav">
       <div className="container-fluid row" id="caja-principal">
@@ -20,7 +53,14 @@ export const Navbar = () => {
           </div>
         </form>
         <div className="d-flex col justify-content-end">
-        <DropdownMenu />
+        <DropdownMenu 
+          isLoggedIn={isLoggedIn} 
+          userName={userName} 
+          onLogout={handleLogout} 
+        />
+        { isLoggedIn ? (
+          <p className="">Hola, {userName} </p>
+        ) : (
           <a href="/login">
             <button className="btn" id="inicio-sesion">
               <svg xmlns="http://www.w3.org/2000/svg"
@@ -33,14 +73,15 @@ export const Navbar = () => {
                   d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
               </svg> Iniciar sesión
             </button>
-          </a>
+          </a>  
+        )}
         </div>
       </div>
     </nav>
   )
 }
 
-const DropdownMenu = () => {
+const DropdownMenu = ({ isLoggedIn, onLogout }) => {
   return (
     <div className="dropdown" style={{ paddingRight: '10px'}}>
       <button className="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -51,13 +92,17 @@ const DropdownMenu = () => {
           <li><button className="dropdown-item" id="soft-clubes" type="button">Software Para clubes</button></li>
         </a>
         <li><button className="dropdown-item" type="button">Info Cancherito</button></li>
-        <li>
-          <button 
-          id="cerrar-sesion-btn" 
-          className="dropdown-item" 
-          type="button"
-          onClick={logout}>
-            Cerrar Sesión</button></li>
+        { isLoggedIn ? (
+          <li> 
+            <button 
+            id="cerrar-sesion-btn" 
+            className="dropdown-item" 
+            type="button"
+            onClick={onLogout}>
+              Cerrar Sesión
+            </button>
+          </li>
+        ) : null } 
       </ul>
     </div>
   );
