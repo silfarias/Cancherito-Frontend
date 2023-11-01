@@ -1,27 +1,59 @@
-function Reserva () {
-    return (
-    <div className="container" id="canchas-body">
-        <div className="row" id="datos-cancha">
-            <div className="col-12" id="datos">
-                <div className="row" id="row-datos">      
-                </div>
-                <Horarios/>
-            </div>
-        </div>
-        <Comentarios/>
-    </div>
-    )
+import { useEffect, useState } from 'react';
+import { environments } from "../config/environments";
+import { useParams } from 'react-router-dom';
 
+function Reserva() {
+  const [oneCancha, setOneCancha] = useState({});
+  let { id } = useParams();
+  
+  useEffect(() => {
+
+    fetch(`${environments.API_URL}/canchas/obtenerCancha/${id}`, {
+      method: 'GET'
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error('Error al obtener la cancha');
+      })
+      .then((data) => {
+        setOneCancha(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  return (
+    <div className="container mt-3" id="canchas-body">
+      <div className="row" id="datos-cancha">
+        <div className="col-12" id="datos">
+          <div className="row" id="row-datos">
+            <div className="offset-1 col-2 " id="logo">
+              <img src={`/uploads/${oneCancha.logo}`} alt="" />
+            </div>
+            <div className="col-9" id="nombre-cancha">
+              <h4>{oneCancha.name}</h4>
+              <p>{oneCancha.description}</p>
+            </div>
+          </div>
+          <Horarios />
+        </div>
+      </div>
+      <Comentarios />
+    </div>
+  );
 }
 
 function Horarios () {
     return (
     <div className="col-12" id="reserva">
         <select className="form-select" aria-label="Default select example">
-            <option selected> Selecciona fecha para reservar </option>
-            <option value="1">11/10/2023</option>
-            <option value="2">12/10/2023</option>
-            <option value="3">13/10/2023</option>
+            <option value=""> Selecciona fecha para reservar </option>
+            <option value="1">01/11/2023</option>
+            <option value="2">02/11/2023</option>
+            <option value="3">03/11/2023</option>
         </select>
 
         <h5>Turnos disponibles</h5>

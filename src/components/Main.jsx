@@ -69,7 +69,7 @@ const Cards = () => {
                   <i className="bi bi-star-fill star-dest"></i>
                   <i className="bi bi-star-fill star-dest"></i>
                 </div>
-                  <a href="canchas.html" className="text-body-secondary">Más info</a>
+                  <a href="/canchas/reservar/:id" className="text-body-secondary">Reservar</a>
                 </div>
               </div>
             </div>
@@ -88,7 +88,7 @@ const Cards = () => {
                     <i className="bi bi-star-fill star-dest"></i>
                     <i className="bi bi-star-fill star-dest"></i>
                   </div>
-                  <a href="#otra-seccion" className="text-body-secondary">Más info</a>
+                  <a href="/canchas/reservar/:id" className="text-body-secondary">Reservar</a>
                 </div>
               </div>
             </div>
@@ -107,7 +107,7 @@ const Cards = () => {
                     <i className="bi bi-star-fill star-dest"></i>
                     <i className="bi bi-star-fill star-dest"></i>
                   </div>
-                  <a href="#otra-seccion" className="text-body-secondary">Más info</a>
+                  <a href="/canchas/reservar/7" className="text-body-secondary">Reservar</a>
                 </div>
               </div>
             </div>

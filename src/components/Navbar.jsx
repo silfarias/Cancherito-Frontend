@@ -10,27 +10,8 @@ export const Navbar = () => {
     const token = localStorage.getItem('token');
     if (token) {
       setIsLoggedIn(true);
-      fetch(`${environments.API_URL}/api/auth/login`, {
-        headers: {
-          method: 'POST',
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-      })
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          }
-          throw new Error('Error al obtener el usuario');
-        })
-        .then((data) => {
-          setUserName(data.name);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [setUserName]);
+    }    
+  });
   
   const handleLogout = () => {
     logout();
@@ -55,11 +36,10 @@ export const Navbar = () => {
         <div className="d-flex col justify-content-end">
         <DropdownMenu 
           isLoggedIn={isLoggedIn} 
-          userName={userName} 
           onLogout={handleLogout} 
         />
         { isLoggedIn ? (
-          <p className="">Hola, {userName} </p>
+          <div className="col-2"></div>
         ) : (
           <a href="/login">
             <button className="btn" id="inicio-sesion">

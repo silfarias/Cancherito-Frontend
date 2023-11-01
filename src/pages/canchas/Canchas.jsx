@@ -1,15 +1,14 @@
 import { Footer } from "../../components/Footer"
+import { ListadoCanchas } from "../../components/ListadoCanchas"
 import { Navbar } from "../../components/Navbar"
+import './home.css'
 
 
 export const Canchas = () => {
     return (
     <>
     <Navbar />
-        <div className="container" id="allCanchas">
-            <div class="row" id="mostrar-canchas">
-            </div>
-        </div>
+        <ListadoCanchas />
     <Footer />    
     </>
     )

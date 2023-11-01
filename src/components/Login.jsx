@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { environments } from '../config/environments';
+import { AuthContext } from '../context/AuthContext';
 
 function Login() {
+    const { dispatch } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const [email, setEmail] = useState('');
@@ -26,10 +28,15 @@ function Login() {
         } else {
             const data = await response.json();
             alert(data.message);
+            dispatch({
+                type: 'LOGIN',
+                payload: data
+            })
             localStorage.setItem('token', JSON.stringify(data.token));
         }
-
-        navigate('/')
+        setTimeout(() => {
+            navigate('/');
+        }, 2000);
 
       } catch (error) {
         console.error(error);

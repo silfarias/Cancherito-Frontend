@@ -1,0 +1,96 @@
+#canchas-body {
+  margin-top: 15px;
+  padding-left: 0;
+  padding-right: 0;
+  height: auto;
+}
+#datos-cancha{
+  height: auto;
+}
+#datos {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+  height: auto;
+}
+#row-datos {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 10px;
+  height: auto;
+}
+#logo {
+  text-align: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+#logo img {
+  width: 100%;
+  border-radius: 50%;
+  margin-top: 5px;
+}
+#nombre-cancha {
+  height: auto;
+}
+#nombre-cancha h4 {
+  margin-top: 5px;
+}
+#nombre-cancha p {
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+  color: black;
+}
+      
+
+/*  Horarios    */
+
+#datos-horarios {
+  height: auto;
+}
+#reserva {
+  margin-top: 10px;
+}
+#reserva select{
+  margin-top: 10px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#reserva h5 {
+  margin-top: 10px;
+  margin-left: 7%;
+  font-weight: bold;
+  color: black;
+}
+#tabla {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* VER TODAS LAS CANCHAS */
+
+.carta-cancha {
+padding-top: 15px;
+}
+
+#map {
+margin-top: 10px;
+margin-bottom: 10px;
+height: 500px;
+width: 650px;
+}
+
+html, body {
+height: 0%;
+margin: 0;
+padding: 0;
+}
