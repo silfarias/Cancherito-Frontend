@@ -1,0 +1,81 @@
+.modalContainer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.35);
+
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease ;
+    z-index: 99999999;
+}
+
+.modalContainer.show {
+    visibility: visible;
+    opacity: 1;
+
+}
+
+.modalContainer.show .modal {
+    transform: translateY(0);
+}
+
+.modal {
+    background-color: rgba(255, 255, 255, 0.35);
+    width: calc(15rem + 15vw);
+    height: auto;
+    padding: 2rem;
+    border-radius: 20px;
+
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2) ;
+
+    transform: translate(-600px);
+    transition: all 0.4s ease;
+}
+
+.modal_header {
+    position: relative;
+    border-bottom: 1px solid #dddddd;
+}
+
+.modal_header-title {
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    margin: 5px;
+}
+
+.modal_content {
+    border-bottom: 1px solid #dddddd;
+    padding: 2rem 0;
+}
+
+.modal_footer {
+    padding: 2rem 0;
+    padding-bottom: 0;
+
+}
+
+.modal_footer button {
+    float: right;
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+.submit {
+    margin-right: 1rem;
+    background-color: #4CAF50;
+    color: white;
+}

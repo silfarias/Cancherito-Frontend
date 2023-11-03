@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import { environments } from '../config/environments';
+import { useNavigate } from 'react-router-dom';
 
 export const FormUser = () => {
+
+    const navigate = useNavigate();
+
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -31,6 +35,7 @@ export const FormUser = () => {
             } else {
                 const data = await response.json();
                 alert(data.message);
+                navigate('/login');
             }
         } catch (error) {
             console.error(error);
@@ -46,7 +51,9 @@ export const FormUser = () => {
                 </div>
 
                 <div className="mx-auto">
-                    <form id="formNewUser" onSubmit={handleRegister} action="/register" method="POST" className="p-3 mt-2 " />
+
+
+                    <form id="formNewUser" onSubmit={handleRegister} action="/register" method="POST" className="p-3 mt-2 ">
                     <p className="text-center text-primary-emphasis">Información Personal</p>
                     <div className="row">
                         <div className="col col-md-6 col-sm-12 mb-3">
@@ -138,7 +145,7 @@ export const FormUser = () => {
                             {/*<a href="/"><button className="btn m-2" type="button">Cancelar</button></a>*/}
                         </div>
                     </div>
-                    <form />
+                    </form >
                 </div>
             </div>
         </>

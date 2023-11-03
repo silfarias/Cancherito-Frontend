@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { environments } from "../config/environments";
 import { useParams } from 'react-router-dom';
+import { Modal } from './Modal.jsx';
 
 function Reserva() {
   const [oneCancha, setOneCancha] = useState({});
   let { id } = useParams();
-  
+
   useEffect(() => {
 
     fetch(`${environments.API_URL}/canchas/obtenerCancha/${id}`, {
@@ -46,64 +47,67 @@ function Reserva() {
   );
 }
 
-function Horarios () {
-    return (
+function Horarios() {
+  const [modal, setModal] = useState(false);
+  const Toggle = () => {
+    setModal(!modal);
+  }
+  return (
     <div className="col-12" id="reserva">
-        <select className="form-select" aria-label="Default select example">
-            <option value=""> Selecciona fecha para reservar </option>
-            <option value="1">01/11/2023</option>
-            <option value="2">02/11/2023</option>
-            <option value="3">03/11/2023</option>
-        </select>
+      <select className="form-select" aria-label="Default select example">
+        <option value=""> Selecciona fecha para reservar </option>
+        <option value="1">01/11/2023</option>
+        <option value="2">02/11/2023</option>
+        <option value="3">03/11/2023</option>
+      </select>
 
-        <h5>Turnos disponibles</h5>
+      <h5>Turnos disponibles</h5>
 
-        <table className="table" id="tabla">
-            <thead>
-              <tr>
-                <th scope="col">Cancha 1</th>
-                <th scope="col">Cancha 2</th>
-                <th scope="col">Cancha 3</th>
-              </tr>
-            </thead>
+      <table className="table" id="tabla">
+        <thead>
+          <tr>
+            <th scope="col">Cancha 1</th>
+            <th scope="col">Cancha 2</th>
+            <th scope="col">Cancha 3</th>
+          </tr>
+        </thead>
 
-            <tbody>
-              <tr>
-                <td><button className="btn">16:00 a 17:00</button></td>
-                <td><button className="btn">16:00 a 17:00</button></td>
-                <td><button className="btn">18:00 a 19:00</button></td>
-              </tr>
-              <tr>
-                <td><button className="btn">19:00 a 20:00</button></td>
-                <td><button className="btn">17:00 a 18:00</button></td>
-                <td><button className="btn">18:00 a 19:00</button></td>
-              </tr>
-              <tr>
-                <td><button className="btn">20:00 a 21:00</button></td>
-                <td><button className="btn">19:00 a 20:00</button></td>
-                <td><button className="btn">18:00 a 19:00</button></td>
-              </tr>
-              <tr>
-                <td><button className="btn">21:00 a 22:00</button></td>
-                <td><button className="btn">22:00 a 23:00</button></td>
-                <td><button className="btn">18:00 a 19:00</button></td>
-              </tr>
-            </tbody>
-        </table>
+        <tbody>
+          <tr>
+            <td><button className="btn" onClick={() => Toggle()}>16:00 a 17:00</button></td>
+            <td><button className="btn">16:00 a 17:00</button></td>
+            <td><button className="btn">18:00 a 19:00</button></td>
+          </tr>
+          <tr>
+            <td><button className="btn">19:00 a 20:00</button></td>
+            <td><button className="btn">17:00 a 18:00</button></td>
+            <td><button className="btn">18:00 a 19:00</button></td>
+          </tr>
+          <tr>
+            <td><button className="btn">20:00 a 21:00</button></td>
+            <td><button className="btn">19:00 a 20:00</button></td>
+            <td><button className="btn">18:00 a 19:00</button></td>
+          </tr>
+          <tr>
+            <td><button className="btn">21:00 a 22:00</button></td>
+            <td><button className="btn">22:00 a 23:00</button></td>
+            <td><button className="btn">18:00 a 19:00</button></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    )
+  )
 }
 
 function Comentarios() {
-    return (
-      <div className="form-floating d-flex align-items-center">
-        <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-        <label htmlFor="floatingTextarea">Dejar un comentario</label>
-        <button className="btn" style={{marginLeft: '10px'}} type="submit">Publicar</button>
-      </div>
-    );
+  return (
+    <div className="form-floating d-flex align-items-center">
+      <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+      <label htmlFor="floatingTextarea">Dejar un comentario</label>
+      <button className="btn" style={{ marginLeft: '10px' }} type="submit">Publicar</button>
+    </div>
+  );
 }
-  
 
 export default Reserva
