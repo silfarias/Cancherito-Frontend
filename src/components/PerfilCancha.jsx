@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { environments } from "../config/environments";
 import { useParams } from 'react-router-dom';
-import { Modal } from './Modal.jsx';
+import CustomModal from './Modal.jsx';
 
 function Reserva() {
   const [oneCancha, setOneCancha] = useState({});
@@ -48,10 +48,12 @@ function Reserva() {
 }
 
 function Horarios() {
-  const [modal, setModal] = useState(false);
-  const Toggle = () => {
-    setModal(!modal);
-  }
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
+
   return (
     <div className="col-12" id="reserva">
       <select className="form-select" aria-label="Default select example">
@@ -74,7 +76,14 @@ function Horarios() {
 
         <tbody>
           <tr>
-            <td><button className="btn" onClick={() => Toggle()}>16:00 a 17:00</button></td>
+            <td><button className="btn" onClick={toggleModal}>15:00 a 16:00</button></td>
+            <CustomModal
+              show={showModal}
+              onHide={toggleModal}
+              title="Reservar Cancha"
+            >
+              ¿Estas Seguro que quieres reservar de 15:00 a 16:00?
+            </CustomModal>
             <td><button className="btn">16:00 a 17:00</button></td>
             <td><button className="btn">18:00 a 19:00</button></td>
           </tr>
