@@ -206,6 +206,21 @@ margin-top: 0px;
   padding: 6px;
 }
 
+/* Card */
+/* Estilos CSS para las imágenes en las tarjetas */
+.card-img-top {
+  max-width: 100%; /* La imagen no superará el ancho del contenedor */
+  height: auto; /* La altura se ajustará automáticamente para mantener la proporción */
+}
+
+/* Opcional: Agregar una máxima altura para controlar la altura máxima de la imagen */
+.card-img-top {
+  max-width: 100%;
+  max-height: 200px; /* Ajusta esto según tus necesidades */
+  height: auto;
+}
+
+
 #tarjeta {
   transition: transform 0.3s ease;
 }

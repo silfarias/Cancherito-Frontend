@@ -34,12 +34,16 @@ function Reserva() {
             <div className="offset-1 col-2 " id="logo">
               <img src={`/uploads/${oneCancha.logo}`} alt="" />
             </div>
-            <div className="col-9" id="nombre-cancha">
+            <div className="col-7" id="nombre-cancha">
               <h4>{oneCancha.name}</h4>
               <p>{oneCancha.description}</p>
             </div>
+            <div className='col-2'>
+              <h5 style={{color:'blue'}}>Ubicación</h5>
+              <p style={{color:'black'}}>{oneCancha.location}</p>
+            </div>
           </div>
-          <Horarios />
+          <Horarios numberCourts={oneCancha.number_courts} />
         </div>
       </div>
       <Comentarios />
@@ -47,20 +51,36 @@ function Reserva() {
   );
 }
 
-function Horarios() {
+
+function Horarios({ numberCourts }) {
   const [showModal, setShowModal] = useState(false);
 
   const toggleModal = () => {
     setShowModal(!showModal);
   };
 
+  const columns = [];
+  for (let i = 1; i <= numberCourts; i++) {
+    columns.push(
+      <td key={i}>
+        <button className="btn" style={{ marginRight: '10px' }} onClick={toggleModal}>15:00 a 16:00</button>
+        <button className='btn' style={{ marginRight: '10px' }}>16:00 a 17:00</button>
+        <button className='btn' style={{ marginRight: '10px' }}>17:00 a 18:00</button>
+        <CustomModal show={showModal} onHide={toggleModal} title="Reservar Cancha">
+          ¿Estás seguro que quieres reservar de 15:00 a 16:00?
+        </CustomModal>
+      </td>
+
+    );
+  }
+
   return (
     <div className="col-12" id="reserva">
       <select className="form-select" aria-label="Default select example">
-        <option value=""> Selecciona fecha para reservar </option>
-        <option value="1">01/11/2023</option>
-        <option value="2">02/11/2023</option>
-        <option value="3">03/11/2023</option>
+        <option value="">Selecciona fecha para reservar</option>
+        <option value="1">05/11/2023</option>
+        <option value="2">06/11/2023</option>
+        <option value="3">07/11/2023</option>
       </select>
 
       <h5>Turnos disponibles</h5>
@@ -68,45 +88,18 @@ function Horarios() {
       <table className="table" id="tabla">
         <thead>
           <tr>
-            <th scope="col">Cancha 1</th>
-            <th scope="col">Cancha 2</th>
-            <th scope="col">Cancha 3</th>
+            {columns.map((_, index) => (
+              <th key={index} scope="col">{`Cancha ${index + 1}`}</th>
+            ))}
           </tr>
         </thead>
 
         <tbody>
-          <tr>
-            <td><button className="btn" onClick={toggleModal}>15:00 a 16:00</button></td>
-            <CustomModal
-              show={showModal}
-              onHide={toggleModal}
-              title="Reservar Cancha"
-            >
-              ¿Estas Seguro que quieres reservar de 15:00 a 16:00?
-            </CustomModal>
-            <td><button className="btn">16:00 a 17:00</button></td>
-            <td><button className="btn">18:00 a 19:00</button></td>
-          </tr>
-          <tr>
-            <td><button className="btn">19:00 a 20:00</button></td>
-            <td><button className="btn">17:00 a 18:00</button></td>
-            <td><button className="btn">18:00 a 19:00</button></td>
-          </tr>
-          <tr>
-            <td><button className="btn">20:00 a 21:00</button></td>
-            <td><button className="btn">19:00 a 20:00</button></td>
-            <td><button className="btn">18:00 a 19:00</button></td>
-          </tr>
-          <tr>
-            <td><button className="btn">21:00 a 22:00</button></td>
-            <td><button className="btn">22:00 a 23:00</button></td>
-            <td><button className="btn">18:00 a 19:00</button></td>
-          </tr>
+          <tr>{columns}</tr>
         </tbody>
       </table>
     </div>
-
-  )
+  );
 }
 
 function Comentarios() {
