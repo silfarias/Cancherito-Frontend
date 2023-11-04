@@ -5,7 +5,6 @@ function App() {
 
   return (
     <AuthUser>
-      
      <AppRouter />
     </AuthUser>
   )

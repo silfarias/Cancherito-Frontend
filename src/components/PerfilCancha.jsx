@@ -53,8 +53,8 @@ function Reserva() {
 
 
 function Horarios({ numberCourts }) {
+  // MODAL 
   const [showModal, setShowModal] = useState(false);
-
   const toggleModal = () => {
     setShowModal(!showModal);
   };
@@ -63,11 +63,12 @@ function Horarios({ numberCourts }) {
   for (let i = 1; i <= numberCourts; i++) {
     columns.push(
       <td key={i}>
-        <button className="btn" style={{ marginRight: '10px' }} onClick={toggleModal}>15:00 a 16:00</button>
-        <button className='btn' style={{ marginRight: '10px' }}>16:00 a 17:00</button>
-        <button className='btn' style={{ marginRight: '10px' }}>17:00 a 18:00</button>
+        <button className="btn" style={{ marginRight: '10px' }} onClick={toggleModal}>17:00 a 18:00</button>
+        <button className='btn' style={{ marginRight: '10px' }}>18:00 a 19:00</button>
+        <button className='btn' style={{ marginRight: '10px' }}>19:00 a 20:00</button>
+        <button className='btn' style={{ marginRight: '10px' }}>20:00 a 21:00</button>
         <CustomModal show={showModal} onHide={toggleModal} title="Reservar Cancha">
-          ¿Estás seguro que quieres reservar de 15:00 a 16:00?
+          ¿Estás seguro que quieres reservar de 17:00 a 18:00 ?
         </CustomModal>
       </td>
 
@@ -88,8 +89,8 @@ function Horarios({ numberCourts }) {
       <table className="table" id="tabla">
         <thead>
           <tr>
-            {columns.map((_, index) => (
-              <th key={index} scope="col">{`Cancha ${index + 1}`}</th>
+            {columns.map((_,i) => (
+              <th key={i} scope="col">{`Cancha ${i + 1}`}</th>
             ))}
           </tr>
         </thead>

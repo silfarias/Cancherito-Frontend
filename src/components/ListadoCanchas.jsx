@@ -28,7 +28,7 @@ export const ListadoCanchas = () => {
             {canchas.map((cancha) => (
               <div key={cancha.id} className="col-4 carta-cancha">
                 <div className="card shadow-sm" id="tarjeta">
-                  <img src={`uploads/${cancha.logo}`} alt="Imagen 1" className="bd-placeholder-img card-img-top" />
+                  <img src={`/uploads/${cancha.logo}`} alt="Imagen 1" className="bd-placeholder-img card-img-top" />
                   <div className="card-body">
                     <h6 className="card-title">{cancha.name}</h6>
                     <div className="d-flex justify-content-between align-items-center">

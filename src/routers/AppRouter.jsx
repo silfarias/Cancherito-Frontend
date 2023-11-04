@@ -31,19 +31,20 @@ export const AppRouter = () => {
                             <Route path='/register-client' element={<RegistroUsuario />} />
                             <Route path='/canchas' element={<Canchas />} />
                             <Route path='/canchas/reservar/:id' element={<OneCancha />} />
+                            <Route path='/registerestab' element={<RegistroEstablecimiento />} />
                         </Routes>
                     </PublicRoutes>
                 } />
 
 
-                {/*Rutas Privadas */}
+                {/*Rutas Privadas
                 <Route path="/*" element={ 
                     <PrivatesRoutes>
                         <Routes>
                             <Route path='/registerestab' element={<RegistroEstablecimiento />} />
                         </Routes>
                     </PrivatesRoutes>
-                 } />
+                 } /> */}
 
                 <Route path='*' element={<PageNotFound />} />
 
