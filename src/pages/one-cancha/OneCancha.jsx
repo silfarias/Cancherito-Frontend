@@ -6,7 +6,7 @@ import './reserva.css'
 export const OneCancha = () => {
     return (
         <>
-            <Reserva />
+        <Reserva />
         </>
     )
 }

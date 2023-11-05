@@ -1,24 +1,26 @@
 import { useState, useEffect } from "react";
 import { logout } from "../apis/auth";
 import { environments } from "../config/environments";
+import Search from "./Search";
+import { ListadoCanchas } from "./ListadoCanchas";
 
 export const Navbar = () => {
+  //Login
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState('');
-
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       setIsLoggedIn(true);
     }    
   });
-  
   const handleLogout = () => {
     logout();
     setIsLoggedIn(false);
   }
 
   return (
+    <>
     <nav className="navbar navbar-expand-lg bg-body-tertiary col-12" id="nav">
       <div className="container-fluid row" id="caja-principal">
         <div className="col-2" id="caja-logo">
@@ -29,9 +31,12 @@ export const Navbar = () => {
         {/* Buscador */}
         <form className="d-flex col-5" role="search">
           <div className="input-group">
-            <input className="form-control me-2 search-input"
-              type="search" placeholder="Buscar Canchas"
-              aria-label="Search" />
+          <input
+            className="form-control me-2 search-input"
+            type="search"
+            placeholder="Buscar Canchas..."
+            aria-label="Search"
+          />
           </div>
         </form>
         <div className="d-flex col justify-content-end">
@@ -59,6 +64,7 @@ export const Navbar = () => {
         </div>
       </div>
     </nav>
+    </>
   )
 }
 
@@ -74,6 +80,8 @@ const DropdownMenu = ({ isLoggedIn, onLogout }) => {
         </a>
         <li><button className="dropdown-item" type="button">Info Cancherito</button></li>
         { isLoggedIn ? (
+        <>
+          <li><hr class="dropdown-divider"></hr></li>
           <li> 
             <button 
             id="cerrar-sesion-btn" 
@@ -83,6 +91,7 @@ const DropdownMenu = ({ isLoggedIn, onLogout }) => {
               Cerrar Sesión
             </button>
           </li>
+        </>
         ) : null } 
       </ul>
     </div>

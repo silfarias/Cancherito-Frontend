@@ -105,3 +105,18 @@ height: 0%;
 margin: 0;
 padding: 0;
 }
+
+#boton-volver {
+  padding: 8px;
+  border-radius: 12px;
+  background-color: rgb(73, 177, 32);
+  color: white;
+  font-size: 15px;
+  transition: transform 0.3s ease;
+  border: 1px solid rgb(62, 150, 28);
+
+}
+
+#boton-volver:hover {
+  transform: scale(1.05);
+}

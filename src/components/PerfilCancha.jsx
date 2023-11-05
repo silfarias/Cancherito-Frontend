@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { environments } from "../config/environments";
 import { useParams } from 'react-router-dom';
-import CustomModal from './Modal.jsx';
+import CustomModal from './modal/Modal.jsx';
 import Button from 'react-bootstrap/Button';
 
 function Reserva() {
@@ -31,11 +31,11 @@ function Reserva() {
     <div className="container-fluid mt-2" id="canchas-body">
       <div className='row'>
         <div className='col'>
-        <Button 
-          onClick={() => window.history.back()} 
-          variant="info">
+          <button 
+            onClick={() => window.history.back()} 
+            id='boton-volver'>
             Volver
-        </Button>{' '}
+          </button>
         </div>
       </div>
       <div className="row" id="datos-cancha">
@@ -60,7 +60,6 @@ function Reserva() {
     </div>
   );
 }
-
 
 function Horarios({ numberCourts }) {
   // MODAL 
