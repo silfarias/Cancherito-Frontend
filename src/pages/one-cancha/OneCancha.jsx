@@ -6,9 +6,7 @@ import './reserva.css'
 export const OneCancha = () => {
     return (
         <>
-            <Navbar />
             <Reserva />
-            <Footer />
         </>
     )
 }

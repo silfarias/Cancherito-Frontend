@@ -30,21 +30,20 @@ function Buscador() {
     };
     return (
         <>
-            <div className="input-group">
-                <input
-                    className="form-control me-2 search-input"
-                    type="search"
-                    placeholder="Buscar Canchas"
-                    value={busqueda}
-                    aria-label="Search"
-                    onChange={handleBusquedaChange}
-                />
-            </div>
+            <input
+                className="form-control me-2 search-input"
+                type="search"
+                placeholder="Buscar Canchas..."
+                value={busqueda}
+                aria-label="Search"
+                onChange={handleBusquedaChange}
+            />
             <div className="container mt-3">
                 <div className="row" id="mostrar-canchas">
                     { busqueda ? (
                         resultados.length > 0 ? (
                             resultados.map((cancha) => (
+
                                 <div key={cancha.id} className="col-4 carta-cancha">
                                     <div className="card shadow-sm" id="tarjeta">
                                         <img

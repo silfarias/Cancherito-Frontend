@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { environments } from "../config/environments";
 import { useParams } from 'react-router-dom';
 import CustomModal from './Modal.jsx';
+import Button from 'react-bootstrap/Button';
 
 function Reserva() {
   const [oneCancha, setOneCancha] = useState({});
@@ -27,11 +28,20 @@ function Reserva() {
   }, []);
 
   return (
-    <div className="container mt-3" id="canchas-body">
+    <div className="container-fluid mt-2" id="canchas-body">
+      <div className='row'>
+        <div className='col'>
+        <Button 
+          onClick={() => window.history.back()} 
+          variant="info">
+            Volver
+        </Button>{' '}
+        </div>
+      </div>
       <div className="row" id="datos-cancha">
         <div className="col-12" id="datos">
           <div className="row" id="row-datos">
-            <div className="offset-1 col-2 " id="logo">
+            <div className="col-3" id="logo">
               <img src={`/uploads/${oneCancha.logo}`} alt="" />
             </div>
             <div className="col-7" id="nombre-cancha">
@@ -46,7 +56,7 @@ function Reserva() {
           <Horarios numberCourts={oneCancha.number_courts} />
         </div>
       </div>
-      <Comentarios />
+      {/* <Comentarios /> */}
     </div>
   );
 }
@@ -63,15 +73,15 @@ function Horarios({ numberCourts }) {
   for (let i = 1; i <= numberCourts; i++) {
     columns.push(
       <td key={i}>
-        <button className="btn" style={{ marginRight: '10px' }} onClick={toggleModal}></button>
-        <button className='btn' style={{ marginRight: '10px' }}></button>
-        <button className='btn' style={{ marginRight: '10px' }}></button>
-        <button className='btn' style={{ marginRight: '10px' }}></button>
+        <button 
+          className="btn"
+          onClick={toggleModal}>
+          17:00-18:00
+        </button>
         <CustomModal show={showModal} onHide={toggleModal} title="Reservar Cancha">
-          ¿Estás seguro que quieres reservar de 17:00 a 18:00 ?
+          ¿Estás seguro que quieres reservar de 17:00 a 18:00?
         </CustomModal>
       </td>
-
     );
   }
 
@@ -96,7 +106,9 @@ function Horarios({ numberCourts }) {
         </thead>
 
         <tbody>
-          <tr>{columns}</tr>
+          <tr>
+            {columns}
+          </tr>
         </tbody>
       </table>
     </div>
