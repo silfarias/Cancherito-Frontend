@@ -63,10 +63,10 @@ function Horarios({ numberCourts }) {
   for (let i = 1; i <= numberCourts; i++) {
     columns.push(
       <td key={i}>
-        <button className="btn" style={{ marginRight: '10px' }} onClick={toggleModal}>17:00 a 18:00</button>
-        <button className='btn' style={{ marginRight: '10px' }}>18:00 a 19:00</button>
-        <button className='btn' style={{ marginRight: '10px' }}>19:00 a 20:00</button>
-        <button className='btn' style={{ marginRight: '10px' }}>20:00 a 21:00</button>
+        <button className="btn" style={{ marginRight: '10px' }} onClick={toggleModal}></button>
+        <button className='btn' style={{ marginRight: '10px' }}></button>
+        <button className='btn' style={{ marginRight: '10px' }}></button>
+        <button className='btn' style={{ marginRight: '10px' }}></button>
         <CustomModal show={showModal} onHide={toggleModal} title="Reservar Cancha">
           ¿Estás seguro que quieres reservar de 17:00 a 18:00 ?
         </CustomModal>

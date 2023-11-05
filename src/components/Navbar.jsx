@@ -26,6 +26,7 @@ export const Navbar = () => {
             <img src="/img/logo_cancheritooo.png" alt="logo" />
           </a>
         </div>
+        {/* Buscador */}
         <form className="d-flex col-5" role="search">
           <div className="input-group">
             <input className="form-control me-2 search-input"

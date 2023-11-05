@@ -42,6 +42,7 @@ export const FormEstab = () => {
                 navigate("/canchas");
             } else {
                 const data = await response.json();
+                alert(data.message);
                 setError(data.message);
             }
         } catch (error) {
@@ -93,15 +94,22 @@ export const FormEstab = () => {
                             <label htmlFor="location" className="form-label">
                                 Ubicación del Club
                             </label>
-                            <div className="d-grid gap-2 col-6 mx-auto">
-                                <button
-                                    className=""
-                                    type="button"
-                                    required={true}
-                                >
-                                    Marcar en el mapa
-                                </button>
-                            </div>
+                            <input 
+                                type="text"
+                                required={true}
+                                className="form-control"
+                                id="location"
+                                name="location"
+                                value={location} 
+                                onChange={(e) => setLocation(e.target.value)} 
+                            />
+                            {/* <button
+                                className=""
+                                type="button"
+                                required={true}
+                            >
+                                Marcar en el mapa
+                            </button> */}
                         </div>
                     </div>
                     <div className="row">
