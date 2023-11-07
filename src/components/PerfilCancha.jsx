@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { environments } from "../config/environments";
 import { useParams } from 'react-router-dom';
 import CustomModal from './modal/Modal.jsx';
-import Button from 'react-bootstrap/Button';
 
 function Reserva() {
   const [oneCancha, setOneCancha] = useState({});
@@ -28,11 +27,12 @@ function Reserva() {
   }, []);
 
   return (
-    <div className="container-fluid mt-2" id="canchas-body">
+    <div className="container mt-2" id="canchas-body">
       <div className='row'>
-        <div className='col'>
+        <div className='col-2'>
           <button 
             onClick={() => window.history.back()} 
+            className='btn'
             id='boton-volver'>
             Volver
           </button>
@@ -123,5 +123,6 @@ function Comentarios() {
     </div>
   );
 }
+
 
 export default Reserva

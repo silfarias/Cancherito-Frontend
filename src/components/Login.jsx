@@ -1,10 +1,11 @@
 import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { environments } from '../config/environments';
 import { AuthContext } from '../context/AuthContext';
 
 function Login() {
     const { dispatch } = useContext(AuthContext);
+    const { state } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const [email, setEmail] = useState('');
@@ -15,7 +16,7 @@ function Login() {
         e.preventDefault();
 
       try {
-        const response = await fetch(`${environments.API_URL}/api/auth/login`, {
+        const response = await fetch(`${environments.API_URL}/api/client/login`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -33,10 +34,11 @@ function Login() {
                 payload: data
             })
             localStorage.setItem('token', JSON.stringify(data.token));
+            setTimeout(() => {
+                navigate('/registerestab');
+            }, 1500);
         }
-        setTimeout(() => {
-            navigate('/');
-        }, 2000);
+
 
       } catch (error) {
         console.error(error);

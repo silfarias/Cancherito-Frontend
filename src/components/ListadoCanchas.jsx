@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { environments } from "../config/environments";
-import Search from "./Search";
+import { Navbar } from "./Navbar";
+import Badge from 'react-bootstrap/Badge';
 
 export const ListadoCanchas = () => {
   const [canchas, setCanchas] = useState([]);
@@ -37,14 +38,16 @@ export const ListadoCanchas = () => {
   };
 
   return (
+    <>
+    <Navbar handleSearch={handleSearch} searchTerm={searchTerm} />
     <div className="container mt-3">
-      <Search handleSearch={handleSearch} searchTerm={searchTerm} />
+    <h3 class="mb-2 mt-2 text-center text-light rounded p-2" style={{backgroundImage: 'linear-gradient(180deg,#1385be,#265d86)', color: 'white'}}>Canchas</h3>
       <div className="row" id="mostrar-canchas">
         {filteredCanchas.length === 0 ? (
           <p>No hay canchas disponibles</p>
         ) : (
           filteredCanchas.map((cancha) => (
-            <div key={cancha.id} className="col-12 col-sm-6 col-md-4 mt-2 carta-cancha">
+            <div key={cancha.id} className="col-12 col-sm-6 col-md-4 carta-cancha">
               <div className="card shadow-sm" id="tarjeta">
                 <img src={`/uploads/${cancha.logo}`} alt="Imagen 1" className="bd-placeholder-img card-img-top" />
                 <div className="card-body">
@@ -62,5 +65,6 @@ export const ListadoCanchas = () => {
         )}
       </div>
     </div>
+    </>
   );
 };

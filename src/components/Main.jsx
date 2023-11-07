@@ -37,7 +37,7 @@ const Centro = () => {
               </div>
               <a href="/canchas">
                 <button type="button" 
-                  className="btn btn-lg explorebtn">VER CANCHAS
+                  className="btn btn-lg explorebtn">Explorar
                 </button>
               </a>
             </div>
@@ -132,7 +132,6 @@ export const Main = () => {
   return (
     <>
       <Cards />
-      <Button />
     </>
   )
 }

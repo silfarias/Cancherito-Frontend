@@ -9,11 +9,11 @@
   background-color:#15297c;
   color: rgb(255, 255, 255);
   border: none;
-  padding: 12px; 
-  font-size: 15px;
+  padding: 10px; 
+  font-size: 12px;
   display: inline-block;
   cursor: pointer;
-  border-radius: 15px;
+  border-radius: 12px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.562);
   transition: transform 0.3s ease;
 }

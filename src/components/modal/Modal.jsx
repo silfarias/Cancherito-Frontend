@@ -32,7 +32,12 @@ function CustomModal({ show, onHide, title, children }) {
                         Cancelar
                     </button>
                     <button 
-                        className="submit">
+                        className="submit"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            alert("Reservado pa");
+                        }}
+                        >
                         Reservar
                     </button>
                 </Modal.Footer>

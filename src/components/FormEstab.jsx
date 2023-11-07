@@ -39,6 +39,7 @@ export const FormEstab = () => {
             });
 
             if (response.ok) {
+                alert("Club registrado exitosamente");
                 navigate("/canchas");
             } else {
                 const data = await response.json();
