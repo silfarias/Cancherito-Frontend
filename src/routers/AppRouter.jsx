@@ -15,6 +15,7 @@ import { OneCancha } from "../pages/one-cancha/OneCancha.jsx";
 import { PageNotFound } from "../pages/PageNotFound.jsx";
 import { PrivatesRoutes } from "./PrivateRoutes.jsx";
 import { PublicRoutes } from "./PublicRoutes.jsx";
+import { FormEmpresa } from "../components/FormEmpresa.jsx";
 
 
 export const AppRouter = () => {
@@ -32,6 +33,7 @@ export const AppRouter = () => {
                             <Route path='/canchas' element={<Canchas />} />
                             <Route path='/canchas/reservar/:id' element={<OneCancha />} />
                             <Route path='/registerestab' element={<RegistroEstablecimiento />} />
+                            <Route path="/register-empresa" element={<FormEmpresa />} />
                         </Routes>
                     </PublicRoutes>
                 } />

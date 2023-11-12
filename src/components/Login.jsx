@@ -35,7 +35,7 @@ function Login() {
             })
             localStorage.setItem('token', JSON.stringify(data.token));
             setTimeout(() => {
-                navigate('/registerestab');
+                navigate('/canchas');
             }, 1500);
         }
 

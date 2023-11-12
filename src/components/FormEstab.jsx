@@ -140,6 +140,7 @@ export const FormEstab = () => {
                                 type="number"
                                 required={true}
                                 className="form-control"
+                                min={1}
                                 id="number_courts"
                                 name="number_courts"
                                 value={numberCourts}
