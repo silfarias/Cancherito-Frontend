@@ -6,7 +6,6 @@ import { useState, useEffect } from "react"
 export const FormEstab = () => {
     const navigate = useNavigate();
     const [name, setName] = useState("");
-    const [location, setLocation] = useState("");
     const [description, setDescription] = useState("");
     const [numberCourts, setNumberCourts] = useState(1); // Valor predeterminado a 1
     const [logo, setLogo] = useState(null);
@@ -95,7 +94,7 @@ export const FormEstab = () => {
                             <label htmlFor="location" className="form-label">
                                 Ubicación del Club
                             </label>
-                            <input 
+                            {/* <input 
                                 type="text"
                                 required={true}
                                 className="form-control"
@@ -103,14 +102,16 @@ export const FormEstab = () => {
                                 name="location"
                                 value={location} 
                                 onChange={(e) => setLocation(e.target.value)} 
-                            />
-                            {/* <button
-                                className=""
-                                type="button"
-                                required={true}
+                            /> */}
+                            <button
+                            className="bg-info-subtle text-emphasis-info border border-1 rounded p-2"
+                            required={true}
+                            onClick={() => {
+                                
+                            }}
                             >
                                 Marcar en el mapa
-                            </button> */}
+                            </button>
                         </div>
                     </div>
                     <div className="row">

@@ -66,7 +66,7 @@ const DropdownMenu = ({ isLoggedIn, onLogout }) => {
         Mas...
       </button>
       <ul className="dropdown-menu" style={{ maxWidth: '200px', overflow: 'hidden' }}>
-        <a href="/register-client">
+        <a href="/register-empresa">
           <li><button className="dropdown-item" id="soft-clubes" type="button">Software Para clubes</button></li>
         </a>
         <li><button className="dropdown-item" type="button">Info Cancherito</button></li>
