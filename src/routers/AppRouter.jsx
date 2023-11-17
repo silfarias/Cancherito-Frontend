@@ -35,6 +35,7 @@ export const AppRouter = () => {
                             <Route path='/canchas/reservar/:id' element={<OneCancha />} />
                             {/* <Route path='/registerestab' element={<RegistroEstablecimiento />} /> */}
                             <Route path="/register-empresa" element={<Empresa />} />
+                            <Route path='*' element={<PageNotFound />} />
                         </Routes>
                     </PublicRoutes>
                 } />
@@ -49,7 +50,6 @@ export const AppRouter = () => {
                     </PrivatesRoutes>
                  } /> */}
 
-                <Route path='*' element={<PageNotFound />} />
 
             </Routes>
         </BrowserRouter>

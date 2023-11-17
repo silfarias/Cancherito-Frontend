@@ -39,33 +39,35 @@ export const ListadoCanchas = () => {
 
   return (
     <>
-    <Navbar handleSearch={handleSearch} searchTerm={searchTerm} />
-    <div className="container mt-3">
-    <h3 className="mb-2 mt-2 text-center text-light rounded p-2" style={{backgroundImage: 'linear-gradient(180deg,#1385be,#265d86)', color: 'white'}}>Canchas</h3>
-      <div className="row" id="mostrar-canchas">
-        {filteredCanchas.length === 0 ? (
-          <p>No hay canchas disponibles</p>
-        ) : (
-          filteredCanchas.map((cancha) => (
-            <div key={cancha.id} className="col-12 col-sm-6 col-md-4 carta-cancha">
-              <div className="card shadow-sm" id="tarjeta">
-                <img src={`/uploads/${cancha.logo}`} alt="Imagen 1" className="bd-placeholder-img card-img-top" />
-                <div className="card-body">
-                  <h6 className="card-title">{cancha.name}</h6>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group"></div>
-                    <a href={`/canchas/reservar/${cancha.id}`} className="text-body-secondary">
-                      Reservar
-                    </a>
+      <Navbar handleSearch={handleSearch} searchTerm={searchTerm} />
+      <div className="container mt-3">
+        <h3 className="mb-2 mt-2 text-center text-light rounded p-2" style={{ backgroundImage: 'linear-gradient(180deg,#1385be,#265d86)', color: 'white' }}>Canchas</h3>
+        <div className="row" id="mostrar-canchas">
+          { filteredCanchas.length === 0 ? (
+            <div className="text-center mt-3">
+              <img src="/img/error-404.jpeg" alt="404" style={{ width: '40%', borderRadius: '10px' }} />
+            </div>
+          ) : (
+            filteredCanchas.map((cancha) => (
+              <div key={cancha.id} className="col-12 col-sm-6 col-md-4 carta-cancha">
+                <div className="card shadow-sm" id="tarjeta">
+                  <img src={`/uploads/${cancha.logo}`} alt="Imagen 1" className="bd-placeholder-img card-img-top" />
+                  <div className="card-body">
+                    <h6 className="card-title">{cancha.name}</h6>
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div className="btn-group"></div>
+                      <a href={`/canchas/reservar/${cancha.id}`} className="text-body-secondary">
+                        Reservar
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))
-        )}
+            ))
+          )}
+        </div>
       </div>
-    </div>
-    <Footer />
+      <Footer />
     </>
   );
 };
