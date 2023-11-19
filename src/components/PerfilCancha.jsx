@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import { environments } from "../config/environments";
 import { useParams } from 'react-router-dom';
 import CustomModal from './modal/Modal.jsx';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
 
 function Reserva() {
   const [oneCancha, setOneCancha] = useState({});
@@ -64,6 +67,9 @@ function Reserva() {
 function Horarios({ numberCourts }) {
   // MODAL 
   const [showModal, setShowModal] = useState(false);
+
+  const [selectedDate, setSelectedDate] = useState(null);
+
   const toggleModal = () => {
     setShowModal(!showModal);
   };
@@ -86,12 +92,13 @@ function Horarios({ numberCourts }) {
 
   return (
     <div className="col-12" id="reserva">
-      <select className="form-select" aria-label="Default select example">
+      
+{/*       <select className="form-select" aria-label="Default select example">
         <option value="">Selecciona fecha para reservar</option>
         <option value="1">05/11/2023</option>
         <option value="2">06/11/2023</option>
         <option value="3">07/11/2023</option>
-      </select>
+      </select> */}
 
       <h5>Turnos disponibles</h5>
 

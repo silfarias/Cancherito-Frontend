@@ -22,7 +22,7 @@ export const FormUser = () => {
         }
 
         try {
-            const response = await fetch(`${environments.API_URL}/api/client/register`, {
+            const response = await fetch(`${environments.API_URL}/api/auth/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ export const FormUser = () => {
                 <div className="mx-auto">
 
 
-                    <form id="formNewUser" onSubmit={handleRegister} action="/register" method="POST" className="p-3 mt-2 ">
+                    <form id="formNewUser" onSubmit={handleRegister} action="/register" method="POST" className="p-2 mt-2">
                     <p className="text-center text-primary-emphasis">Información Personal</p>
                     <div className="row">
                         <div className="col col-md-6 col-sm-12 mb-3">

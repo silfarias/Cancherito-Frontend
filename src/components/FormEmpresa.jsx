@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Botonera } from "./FormUser";
-import { Footer } from "./Footer";
 import { environments } from "../config/environments";
 import Col from 'react-bootstrap/Col';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
@@ -160,7 +159,6 @@ export const FormEmpresa = () => {
                         <FloatingLabel controlId="floatingInputGridNumberCourts" label="Numero de Canchas">
                             <Form.Control
                                 type="number"
-                                defaultValue={1}
                                 min={1}
                                 placeholder=""
                                 value={numberCourts}
@@ -208,7 +206,12 @@ export const FormEmpresa = () => {
 
                         ) : (
 
-                            <Form onSubmit={handleRegisterUser} className="mt-4 border border-2 p-3 rounded rounded-3" id="wrapper">
+                            <Form
+                                onSubmit={handleRegisterUser}
+                                className="mt-4 border border-2 p-3 rounded rounded-3"
+                                id="wrapper"
+                                style={{ backgroundColor: '#cccc' }}
+                            >
                                 <p className="text-center" style={{ color: '#000' }}>Información personal</p>
                                 <Row className="g-2">
                                     <Col md>
@@ -284,7 +287,6 @@ export const FormEmpresa = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </>
     )
 }
