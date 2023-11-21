@@ -19,6 +19,7 @@ export const FormEmpresa = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [clientId, setClientId] = useState(null);
 
     const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
@@ -44,6 +45,7 @@ export const FormEmpresa = () => {
             } else {
                 const data = await response.json();
                 alert(data.message);
+                setClientId(data.clientId);
                 setRegistrationSuccess(true);
             }
         } catch (error) {
@@ -73,6 +75,7 @@ export const FormEmpresa = () => {
         const handleRegisterEstab = async (e) => {
             e.preventDefault();
 
+
             if (numberCourts < 1 || !Number.isInteger(numberCourts)) {
                 setError("El Establecimiento debe contar con al menos una cancha!");
                 return;
@@ -84,6 +87,7 @@ export const FormEmpresa = () => {
             formData.append("description", description);
             formData.append("number_courts", numberCourts);
             formData.append("archivo", logo);
+            formData.append("clientId", clientId);
 
             try {
                 const response = await fetch(`${environments.API_URL}/api/estab`, {

@@ -90,15 +90,35 @@ function Horarios({ numberCourts }) {
     );
   }
 
+/*   function isWithinOneWeek(date) {
+    const currentDate = new Date();
+    const sevenDaysLater = new Date();
+    sevenDaysLater.setDate(currentDate.getDate() + 7);
+    return date >= currentDate && date <= sevenDaysLater;
+  } */
+
+  function isWithinOneWeek(date) {
+    const currentDate = new Date();
+    const eightDaysLater = new Date();
+    eightDaysLater.setDate(currentDate.getDate() + 7);
+    eightDaysLater.setHours(23, 59, 59, 999);
+    return date >= currentDate && date <= eightDaysLater;
+  }
+  
+  
   return (
     <div className="col-12" id="reserva">
-      
-{/*       <select className="form-select" aria-label="Default select example">
-        <option value="">Selecciona fecha para reservar</option>
-        <option value="1">05/11/2023</option>
-        <option value="2">06/11/2023</option>
-        <option value="3">07/11/2023</option>
-      </select> */}
+      <div className="d-flex flex-column align-items-center">
+        <p className="text-center" style={{color:'black'}}>Selecciona la fecha</p>
+        <DatePicker 
+          selected={selectedDate} 
+          onChange={(date) => setSelectedDate(date)}
+          filterDate={isWithinOneWeek}
+          className="form-control"
+          dateFormat="dd/MM/yyyy"
+        />
+      </div>
+
 
       <h5>Turnos disponibles</h5>
 
