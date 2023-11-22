@@ -36,17 +36,6 @@ export const AppRouter = () => {
                     </PublicRoutes>
                 } />
 
-
-                {/*Rutas Privadas
-                <Route path="/*" element={ 
-                    <PrivatesRoutes>
-                        <Routes>
-                            <Route path='/registerestab' element={<RegistroEstablecimiento />} />
-                        </Routes>
-                    </PrivatesRoutes>
-                 } /> */}
-
-
             </Routes>
         </BrowserRouter>
     )

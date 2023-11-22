@@ -16,7 +16,7 @@ function Login() {
         e.preventDefault();
 
       try {
-        const response = await fetch(`${environments.API_URL}/api/client/login`, {
+        const response = await fetch(`${environments.API_URL}/api/auth/login`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
