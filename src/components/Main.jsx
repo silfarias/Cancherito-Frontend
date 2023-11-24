@@ -56,6 +56,7 @@ const Cards = () => {
         <h4 className="text-center mb-4">Canchas Destacadas</h4>
 
         <div className="row justify-content-center align-items-center">
+          
           <div className="col-11 col-sm-6 col-md-4 mt-2">
             <div className="card shadow-sm" id="tarjeta">
               <img src="img/cancha1.jfif" alt="Imagen 1" className="bd-placeholder-img card-img-top" />

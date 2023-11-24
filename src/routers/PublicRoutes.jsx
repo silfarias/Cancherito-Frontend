@@ -9,7 +9,4 @@ export const PublicRoutes = ({ children }) => {
   const { state } = useContext(AuthContext)
 
 
-  return ( !state.isLogged )
-        ? children
-        : <Navigate to={'/'} />
-}
+  return ( !state.isLogged ) ? children : <Navigate to={'/'} />}
