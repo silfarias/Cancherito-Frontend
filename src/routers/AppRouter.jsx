@@ -15,6 +15,8 @@ import { PageNotFound } from "../pages/PageNotFound.jsx";
 import { PrivatesRoutes } from "./PrivateRoutes.jsx";
 import { PublicRoutes } from "./PublicRoutes.jsx";
 import { Empresa } from "../pages/usuarios/Empresa.jsx";
+import { ListadoCanchas } from "../components/ListadoCanchas.jsx";
+import { FormEmpresa } from "../components/FormEmpresa.jsx";
 
 
 export const AppRouter = () => {
@@ -25,12 +27,12 @@ export const AppRouter = () => {
                 <Route path="*" element={
                     <PublicRoutes>
                         <Routes>
-                            <Route path='/' element={<Inicio />} />
-                            <Route path="/login" element={<InicioSesion />} />
-                            <Route path='/register' element={<RegistroUsuario />} />
-                            <Route path="/register-empresa" element={<Empresa />} />
-                            <Route path='/canchas' element={<Canchas />} />
-                            <Route path='/canchas/reservar/:id' element={<OneCancha />} />
+                            <Route path='/' Component={Inicio} />
+                            <Route path="/login" Component={InicioSesion} />
+                            <Route path='/register' Component={RegistroUsuario} />
+                            <Route path="/register-empresa" Component={Empresa} />
+                            <Route path='/canchas' Component={Canchas} />
+                            <Route path='/canchas/reservar/:id' Component={OneCancha} />
                             <Route path='*' element={<PageNotFound />} />
                         </Routes>
                     </PublicRoutes>
