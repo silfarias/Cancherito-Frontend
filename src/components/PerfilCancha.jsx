@@ -1,10 +1,16 @@
 import { useEffect, useState } from 'react';
 import { environments } from "../config/environments";
-import { useParams } from 'react-router-dom';
-import CustomModal from './modal/Modal.jsx';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import { Link, useParams } from 'react-router-dom';
+import { Horarios } from './Horarios.jsx';
 
+//modal
+import CustomModal from './modal/Modal.jsx';
+
+//este es del calendario
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 function Reserva() {
   const [oneCancha, setOneCancha] = useState({});
@@ -33,12 +39,13 @@ function Reserva() {
     <div className="container mt-2" id="canchas-body">
       <div className='row'>
         <div className='col-2'>
-          <button 
-            onClick={() => window.history.back()} 
-            className='btn'
-            id='boton-volver'>
-            Volver
-          </button>
+          <Link to='/canchas'>
+            <button
+              className='btn'
+              id='boton-volver'>
+              Volver
+            </button>
+          </Link>
         </div>
       </div>
       <div className="row" id="datos-cancha">
@@ -52,22 +59,20 @@ function Reserva() {
               <p>{oneCancha.description}</p>
             </div>
             <div className='col-2'>
-              <h5 style={{color:'blue'}}>Ubicación</h5>
-              <p style={{color:'black'}}>{oneCancha.location}</p>
+              <h5 style={{ color: 'blue' }}>Ubicación</h5>
+              <p style={{ color: 'black' }}>{oneCancha.location}</p>
             </div>
           </div>
-          <Horarios numberCourts={oneCancha.number_courts} />
+          <Horarios cantcanchas={oneCancha.number_courts} />
         </div>
       </div>
-      {/* <Comentarios /> */}
     </div>
   );
 }
 
-function Horarios({ numberCourts }) {
+/* function Horarios({ numberCourts }) {
   // MODAL 
   const [showModal, setShowModal] = useState(false);
-
   const [selectedDate, setSelectedDate] = useState(null);
 
   const toggleModal = () => {
@@ -78,7 +83,7 @@ function Horarios({ numberCourts }) {
   for (let i = 1; i <= numberCourts; i++) {
     columns.push(
       <td key={i}>
-        <button 
+        <button
           className="btn"
           onClick={toggleModal}>
           17:00-18:00
@@ -90,13 +95,6 @@ function Horarios({ numberCourts }) {
     );
   }
 
-/*   function isWithinOneWeek(date) {
-    const currentDate = new Date();
-    const sevenDaysLater = new Date();
-    sevenDaysLater.setDate(currentDate.getDate() + 7);
-    return date >= currentDate && date <= sevenDaysLater;
-  } */
-
   function isWithinOneWeek(date) {
     const currentDate = new Date();
     const eightDaysLater = new Date();
@@ -104,19 +102,20 @@ function Horarios({ numberCourts }) {
     eightDaysLater.setHours(23, 59, 59, 999);
     return date >= currentDate && date <= eightDaysLater;
   }
-  
-  
+
+
   return (
     <div className="col-12" id="reserva">
       <div className="d-flex flex-column align-items-center">
-        <p className="text-center" style={{color:'black'}}>Selecciona la fecha</p>
-        <DatePicker 
-          selected={selectedDate} 
-          onChange={(date) => setSelectedDate(date)}
-          filterDate={isWithinOneWeek}
-          className="form-control"
-          dateFormat="dd/MM/yyyy"
-        />
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DemoContainer components={['DatePicker']}>
+            <DatePicker 
+              label="Seleccione Fecha"
+              value={selectedDate}
+              onChange={(date) => setSelectedDate(date)}
+              filterDate={isWithinOneWeek} />
+          </DemoContainer>
+        </LocalizationProvider>
       </div>
 
 
@@ -125,7 +124,7 @@ function Horarios({ numberCourts }) {
       <table className="table" id="tabla">
         <thead>
           <tr>
-            {columns.map((_,i) => (
+            {columns.map((_, i) => (
               <th key={i} scope="col">{`Cancha ${i + 1}`}</th>
             ))}
           </tr>
@@ -139,7 +138,6 @@ function Horarios({ numberCourts }) {
       </table>
     </div>
   );
-}
-
+} */
 
 export default Reserva

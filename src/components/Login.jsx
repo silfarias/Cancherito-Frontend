@@ -1,54 +1,8 @@
-import { useState, useContext } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
-import { environments } from '../config/environments';
-import { AuthContext } from '../context/AuthContext';
 import { Boton } from './Boton';
+import { useLogin } from '../hooks/useLogin';
 
 function Login() {
-    const { dispatch } = useContext(AuthContext);
-    const { state } = useContext(AuthContext);
-    const navigate = useNavigate();
-
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        try {
-            const response = await
-                fetch(`${environments.API_URL}/api/auth/login`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ email, password }),
-                });
-
-            if (!response.ok) {
-                throw new Error('La contraseña o el email son incorrectos', error);
-            } else {
-                const data = await response.json();
-                alert(data.message);
-                dispatch({
-                    type: 'LOGIN',
-                    payload: data
-                })
-                localStorage.setItem('token', JSON.stringify(data.token));
-                setTimeout(() => {
-                    navigate('/canchas');
-                }, 1500);
-            }
-
-
-        } catch (error) {
-            console.error(error);
-            alert('La contraseña o el email son incorrectos');
-            setError('La contraseña o el email son incorrectos');
-        }
-    }
-
+    const { email, password, setEmail, setPassword, handleSubmit, error} = useLogin()
     return (
         <div className='container'>
             <div className="d-grid gap-2 d-md-block mt-2">
@@ -90,7 +44,7 @@ function Login() {
                             required />
                     </div>
 
-                    <div className="mt-4" id="boton">
+                    <div className="mt-4 mb-3" id="boton">
                         <button
                             type="submit"
                             className="btn">

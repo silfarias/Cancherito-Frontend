@@ -83,6 +83,8 @@ export const FormEmpresa = () => {
                 return;
             }
 
+            
+
             const formData = new FormData();
             formData.append("name", name);
             formData.append("location", location);

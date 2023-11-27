@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 export const Navbar = ({handleSearch, searchTerm}) => {
   //Login
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userName, setUserName] = useState('');
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -67,14 +66,14 @@ const DropdownMenu = ({ isLoggedIn, onLogout }) => {
         Mas...
       </button>
       <ul className="dropdown-menu" style={{ maxWidth: '200px', overflow: 'hidden' }}>
-        <a href="/register-empresa">
           <li>
             <Link to="/register-empresa">
               <button className="dropdown-item" id="soft-clubes" type="button">Software Para clubes</button>
             </Link>
           </li>
-        </a>
-        <li><button className="dropdown-item" type="button">Info Cancherito</button></li>
+        <li>
+          <button className="dropdown-item" type="button">Info Cancherito</button>
+        </li>
         {isLoggedIn ? (
           <>
             <li><hr className="dropdown-divider"></hr></li>

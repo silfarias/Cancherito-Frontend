@@ -56,16 +56,6 @@ const Cards = () => {
   )
 }
 
-const Button = () => {
-  return (
-    <div id="mas-canchas">
-      <a href="/canchas">
-        <button className="btn">Mas canchas</button>
-      </a>
-    </div>
-  )
-}
-
 export const Main = () => {
   return (
     <>

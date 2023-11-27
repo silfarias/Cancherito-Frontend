@@ -1,12 +1,14 @@
+import { Link } from "react-router-dom"
+
 export const Footer = () => {
   return (
-    <footer className="container-fluid py-4 bg-dark">
+    <footer className="container-fluid py-4 bg-dark" >
       <div className="row justify-content-center align-items-center">
 
         <div className="col-md-3 col-12 text-center" id="imgcancha">
-          <a className="navbar-brand" href="#caja-principal">
+          <Link className="navbar-brand" to="/">
             <img src="/img/logo_cancheritooo.png" alt="logo" />
-          </a>
+          </Link>
         </div>
 
 
