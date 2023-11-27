@@ -72,7 +72,9 @@ const DropdownMenu = ({ isLoggedIn, onLogout }) => {
             </Link>
           </li>
         <li>
-          <button className="dropdown-item" type="button">Info Cancherito</button>
+          <Link to ="/info-cancherito">
+            <button className="dropdown-item" type="button">Info Cancherito</button>
+          </Link>
         </li>
         {isLoggedIn ? (
           <>

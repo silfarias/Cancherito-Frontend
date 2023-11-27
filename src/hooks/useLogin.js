@@ -1,12 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { environments } from "../config/environments.js";
 
+export function useLogin () {
 
-export function useLogin  () {
-
-    const { dispatch } = useContext(AuthContext);
-    const { state } = useContext(AuthContext);
+    const { dispatch, state } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const [email, setEmail] = useState('');
@@ -31,10 +30,7 @@ export function useLogin  () {
             } else {
                 const data = await response.json();
                 alert(data.message);
-                dispatch({
-                    type: 'LOGIN',
-                    payload: data
-                })
+                dispatch({ type: 'LOGIN', payload: data.player });
                 localStorage.setItem('token', JSON.stringify(data.token));
                 setTimeout(() => {
                     navigate('/canchas');
@@ -49,6 +45,6 @@ export function useLogin  () {
     }
 
     return (
-        email, password, setEmail, setPassword, handleSubmit, error
+        { email, password, setEmail, setPassword, handleSubmit, error }
     )
 }
