@@ -1,0 +1,27 @@
+
+#contenedor-turnos-fecha {
+    height: auto;
+    margin-top: 10px;
+}
+#turnos-disponibles {
+    /* border: 2px solid #004173; */
+    height: auto;
+    margin-left: 12px;
+}
+#turnos-disponibles h5 {
+    text-align: center;
+    color: #004173;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+#fecha {
+    /* border: 2px solid #004173; */
+    padding-top: 3px;
+}
+#elige-fecha{
+    
+}
+.reservado {
+    display: none;
+}

@@ -7,7 +7,7 @@ import './home.css'
 export const Canchas = () => {
     return (
     <>
-    <ListadoCanchas /> 
+        <ListadoCanchas /> 
     </>
     )
 }

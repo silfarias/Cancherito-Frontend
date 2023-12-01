@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { environments } from "../config/environments";
 import { useParams } from 'react-router-dom';
-import CustomModal from './modal/Modal.jsx';
+import { HorariosCalu } from './HorariosCalu.jsx';
+import 'react-datepicker/dist/react-datepicker.css';
+
 
 function Reserva() {
   const [oneCancha, setOneCancha] = useState({});
@@ -43,27 +45,32 @@ function Reserva() {
           <div className="row" id="row-datos">
             <div className="col-3" id="logo">
               <img src={`/uploads/${oneCancha.logo}`} alt="" />
+              <div className='' id='box-ubication'>
+                <h5>Dirección</h5>
+                <p style={{color:'black'}}>{oneCancha.location}</p>
             </div>
-            <div className="col-7" id="nombre-cancha">
+            </div>
+            <div className="offset-1 col-7" id="nombre-cancha">
               <h4>{oneCancha.name}</h4>
               <p>{oneCancha.description}</p>
             </div>
-            <div className='col-2'>
-              <h5 style={{color:'blue'}}>Ubicación</h5>
-              <p style={{color:'black'}}>{oneCancha.location}</p>
-            </div>
           </div>
-          <Horarios numberCourts={oneCancha.number_courts} />
+          <HorariosCalu cantcanchas={oneCancha.number_courts} />
         </div>
       </div>
       {/* <Comentarios /> */}
     </div>
   );
 }
+/*
 
 function Horarios({ numberCourts }) {
-  // MODAL 
+  // MODAL
+  
   const [showModal, setShowModal] = useState(false);
+
+  const [selectedDate, setSelectedDate] = useState(null);
+
   const toggleModal = () => {
     setShowModal(!showModal);
   };
@@ -84,14 +91,28 @@ function Horarios({ numberCourts }) {
     );
   }
 
+  function isWithinOneWeek(date) {
+    const currentDate = new Date();
+    const eightDaysLater = new Date();
+    eightDaysLater.setDate(currentDate.getDate() + 7);
+    eightDaysLater.setHours(23, 59, 59, 999);
+    return date >= currentDate && date <= eightDaysLater;
+  }
+  
+  
   return (
     <div className="col-12" id="reserva">
-      <select className="form-select" aria-label="Default select example">
-        <option value="">Selecciona fecha para reservar</option>
-        <option value="1">05/11/2023</option>
-        <option value="2">06/11/2023</option>
-        <option value="3">07/11/2023</option>
-      </select>
+      <div className="d-flex flex-column align-items-center">
+        <p className="text-center" style={{color:'black'}}>Selecciona la fecha</p>
+        <DatePicker 
+          selected={selectedDate} 
+          onChange={(date) => setSelectedDate(date)}
+          filterDate={isWithinOneWeek}
+          className="form-control"
+          dateFormat="dd/MM/yyyy"
+        />
+      </div>
+
 
       <h5>Turnos disponibles</h5>
 
@@ -113,16 +134,6 @@ function Horarios({ numberCourts }) {
     </div>
   );
 }
-
-function Comentarios() {
-  return (
-    <div className="form-floating d-flex align-items-center">
-      <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-      <label htmlFor="floatingTextarea">Dejar un comentario</label>
-      <button className="btn" style={{ marginLeft: '10px' }} type="submit">Publicar</button>
-    </div>
-  );
-}
-
+*/
 
 export default Reserva

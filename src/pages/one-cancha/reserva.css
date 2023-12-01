@@ -13,6 +13,25 @@
   margin-right: 0;
   height: auto;
 }
+#nombre-cancha {
+  height: auto;
+  background-color: rgb(19, 133, 190, 0.12);
+  border-radius: 4px;
+  padding: 5px;
+}
+
+#nombre-cancha h4 {
+  margin-top: 5px;
+  color: #004173;
+}
+
+#nombre-cancha p {
+  margin-top: 10px;
+  padding: 20px;
+  font-size: 20px;
+  text-align: justify;
+  color: black;
+}
 
 #row-datos {
   padding-left: 0;
@@ -21,37 +40,42 @@
   margin-right: 0;
   margin-top: 10px;
   height: auto;
+  
 }
 
 #logo {
-  text-align: center;
   padding-left: 0;
   padding-right: 0;
+  background-color: rgb(19, 133, 190, 0.12);
+  
 }
 
 #logo img {
-  width: 100%;
+  width: 96%;
+  margin-left: 2%;
+  margin-right: 2%;
   border-radius: 50%;
   margin-top: 5px;
-  border: 2px solid rgb(62, 150, 28);
+  border: 2px solid #004173;
 }
 
-#nombre-cancha {
-  height: auto;
-}
 
-#nombre-cancha h4 {
-  margin-top: 5px;
-}
-
-#nombre-cancha p {
-  margin-top: 10px;
-  padding: 10px;
-  font-size: 20px;
+#box-ubication{
+  border-radius: 4px;
   text-align: center;
-  color: black;
+  height: auto;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-top: 5px;
+  text-align: center;
 }
-      
+#box-ubication h5 {
+  font-weight: bold;
+  color: #004173;
+}
+#box-ubication p {
+  margin: 0;
+}     
 
 /*  Horarios    */
 
@@ -78,12 +102,12 @@
 }
 
 #tabla {
-  margin-top: 20px;
   margin-bottom: 30px;
   width: 90%;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+
 }
 
 /* VER TODAS LAS CANCHAS */
@@ -108,14 +132,44 @@ padding: 0;
 #boton-volver {
   padding: 8px;
   border-radius: 12px;
-  background-color: rgb(73, 177, 32);
+  background-color: #004173;
   color: white;
   font-size: 15px;
   transition: transform 0.3s ease;
-  border: 1px solid rgb(62, 150, 28);
+  border: 1px solid black
 
 }
 
 #boton-volver:hover {
   transform: scale(1.05);
+}
+
+/* Estilos para el input */
+.react-datepicker-wrapper {
+  width: 10%;
+  margin-top: 0;
+}
+
+.react-datepicker__input-container {
+  width: 100%;
+}
+
+.react-datepicker__input-container input {
+  width: 100%;
+  height: 40px;
+  font-size: 1rem;
+  padding: 8px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
+/* Estilos adicionales para el calendario */
+.react-datepicker {
+  font-family: 'Arial', sans-serif; /* Cambiar por la fuente que desees */
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
+.react-datepicker__header {
+  background-color: #3a98fd;
 }

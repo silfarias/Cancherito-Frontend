@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Botonera } from "./FormUser";
-import { Footer } from "./Footer";
 import { environments } from "../config/environments";
 import Col from 'react-bootstrap/Col';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import { Boton } from "./Boton";
+import { Footer } from "./Footer";
 
 export const FormEmpresa = () => {
 
@@ -20,6 +21,7 @@ export const FormEmpresa = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [clientId, setClientId] = useState(null);
 
     const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
@@ -45,6 +47,7 @@ export const FormEmpresa = () => {
             } else {
                 const data = await response.json();
                 alert(data.message);
+                setClientId(data.clientId);
                 setRegistrationSuccess(true);
             }
         } catch (error) {
@@ -74,6 +77,7 @@ export const FormEmpresa = () => {
         const handleRegisterEstab = async (e) => {
             e.preventDefault();
 
+
             if (numberCourts < 1 || !Number.isInteger(numberCourts)) {
                 setError("El Establecimiento debe contar con al menos una cancha!");
                 return;
@@ -85,6 +89,7 @@ export const FormEmpresa = () => {
             formData.append("description", description);
             formData.append("number_courts", numberCourts);
             formData.append("archivo", logo);
+            formData.append("clientId", clientId);
 
             try {
                 const response = await fetch(`${environments.API_URL}/api/estab`, {
@@ -160,7 +165,6 @@ export const FormEmpresa = () => {
                         <FloatingLabel controlId="floatingInputGridNumberCourts" label="Numero de Canchas">
                             <Form.Control
                                 type="number"
-                                defaultValue={1}
                                 min={1}
                                 placeholder=""
                                 value={numberCourts}
@@ -191,7 +195,12 @@ export const FormEmpresa = () => {
     return (
         <>
             <div className="container">
-                <Botonera />
+                <div className="d-grid gap-2 d-md-block mt-2">
+                    <Boton ruta="/" texto="Inicio" clase="bi bi-house" path="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+                    <Boton ruta="/login" texto="Iniciar Sesion" path="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"
+                        fill="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                </div>
+
                 <div className="row">
                     <div className="col">
                         <div className="logo">
@@ -208,7 +217,12 @@ export const FormEmpresa = () => {
 
                         ) : (
 
-                            <Form onSubmit={handleRegisterUser} className="mt-4 border border-2 p-3 rounded rounded-3" id="wrapper">
+                            <Form
+                                onSubmit={handleRegisterUser}
+                                className="mt-4 border border-2 p-3 rounded rounded-3"
+                                id="wrapper"
+                                style={{ backgroundColor: '#cccc' }}
+                            >
                                 <p className="text-center" style={{ color: '#000' }}>Información personal</p>
                                 <Row className="g-2">
                                     <Col md>

@@ -1,23 +1,26 @@
-import { Modal } from 'react-bootstrap';
 import { useState } from 'react';
-import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
+import { Modal } from 'react-bootstrap';
 import { environments } from '../../config/environments.js';
-import axios from "axios";
 import './modal.css';
 
-function CustomModal({ show, onHide, title, children }) {
+import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
+import axios from "axios"
+
+
+function CustomModal({ show, onHide, title, reserva, children }) {
 
     // Mercado Pago
+    /*
     const [preferenceId, setPreferenceID] = useState(null);
     initMercadoPago("TEST-f90e20c5-1e42-44bf-835f-7cd6c55ff428");
   
     const createPreference = async () => {
       try {
         const response = await axios.post(
-          `${environments.API_URL}/create_preference`,
+          "http://localhost:4000/create_preference",
           {
-            description: "Cancha",
-            price: 5000,
+            description: "fulbo",
+            price: 100,
             quantity: 1,
             currency_id: "ARS"
           }
@@ -26,57 +29,36 @@ function CustomModal({ show, onHide, title, children }) {
         return id;
       
       } catch (error) {
-        console.log(error);
+          console.log(error);
       }
     };
   
-    // Mercado Pago
     const handleBuy = async () => {
       const id = await createPreference();
       if (id) {
           setPreferenceID(id);
       }
     }
-
+    */
 
     return (
-        <Modal
-            show={show}
-            onHide={onHide}
-            dialogClassName="modal-left"
-            backdrop="static"
-            className='modal'
-            centered
-        >
+        <Modal show={show} onHide={onHide} dialogClassName="modal-left" backdrop="static" className='modal'centered>
+
             <div className="modal-left-content">
-                <Modal.Header
-                    closeButton
-                    className="modal_header"
-                >
-                    <Modal.Title
-                        className="modal_header-title">
+                <Modal.Header closeButton className="modal_header">
+                    <Modal.Title className="modal_header-title">
                         {title}
                     </Modal.Title>
                 </Modal.Header>
-                <Modal.Body
-                    className="modal_content">
+                <Modal.Body className="modal_content">
                     {children}
                 </Modal.Body>
                 <Modal.Footer>
-                    <button
-                        className="modal-close"
-                        onClick={onHide}>
-                        Cancelar
-                    </button>
-                    <button 
-                        className="submit"
-                        onClick={handleBuy}
-                        >
-                        Reservar
-                    </button>
-                    {preferenceId && <Wallet initialization={{ preferenceId}}/>} 
+                    <button className="modal-close" onClick={onHide}>Cancelar</button>
+                    <button className="submit" onClick={reserva}> Reservar</button> 
                 </Modal.Footer>
             </div>
+
         </Modal>
     );
 }

@@ -140,6 +140,9 @@ h4 {
   text-align: center;
   margin-top: 10px;
 }
+.explore button{
+  font-size: 15px;
+}
 
 #ciudad {
   margin-right: 8px;

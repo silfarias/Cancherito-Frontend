@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { logout } from "../apis/auth";
 import Search from "./Search";
+import { Link } from "react-router-dom";
 
 export const Navbar = ({handleSearch, searchTerm}) => {
   //Login
@@ -24,9 +25,9 @@ export const Navbar = ({handleSearch, searchTerm}) => {
       <nav className="navbar navbar-expand-lg bg-body-tertiary" id="nav">
         <div className="container-fluid row" id="caja-principal">
           <div className="col-2" id="caja-logo">
-            <a className="navbar-brand" href="/">
+            <Link className="navbar-brand" to="/">
               <img src="/img/logo_cancheritooo.png" alt="logo" />
-            </a>
+            </Link>
           </div>
           {/* Buscador */}
           <Search handleSearch={handleSearch} searchTerm={searchTerm} />
@@ -38,7 +39,7 @@ export const Navbar = ({handleSearch, searchTerm}) => {
             {isLoggedIn ? (
               <div className="col-2"></div>
             ) : (
-              <a href="/login">
+              <Link to="/login">
                 <button className="btn" id="inicio-sesion">
                   <svg xmlns="http://www.w3.org/2000/svg"
                     width="16" height="16"
@@ -50,7 +51,7 @@ export const Navbar = ({handleSearch, searchTerm}) => {
                       d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                   </svg> Iniciar sesión
                 </button>
-              </a>
+              </Link>
             )}
           </div>
         </div>
@@ -66,9 +67,13 @@ const DropdownMenu = ({ isLoggedIn, onLogout }) => {
         Mas...
       </button>
       <ul className="dropdown-menu" style={{ maxWidth: '200px', overflow: 'hidden' }}>
-        <a href="/register-empresa">
-          <li><button className="dropdown-item" id="soft-clubes" type="button">Software Para clubes</button></li>
-        </a>
+      
+          <li>
+            <Link to="/register-empresa">
+              <button className="dropdown-item" id="soft-clubes" type="button">Software Para clubes</button>
+            </Link>
+          </li>
+      
         <li><button className="dropdown-item" type="button">Info Cancherito</button></li>
         {isLoggedIn ? (
           <>
