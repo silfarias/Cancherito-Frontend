@@ -43,13 +43,10 @@ const Cards = () => {
       <Centro />
       <div className="container col-12 album py-5 bg-body-secundary" id="caja-card">
         <h4 className="text-center mb-4">Canchas Destacadas</h4>
-
         <div className="row justify-content-center align-items-center">
-
-          <OneCard id="6" name="The Futbol Factory" logo="futbolfactory.jpg" />
-          <OneCard id="8" name="Chacra 8" logo="chacra8.jpg" />
-          <OneCard id="7" name="Maracaná" logo="maracana.jpeg" />
-
+          <OneCard id="1" name="LeClub" logo="cancha3.jfif" />
+          <OneCard id="2" name="La Franchesca" logo="padel1.jpg" />
+          <OneCard id="3" name="Fair Play" logo="futbolfactory.jpg" />
         </div>
       </div>
     </>

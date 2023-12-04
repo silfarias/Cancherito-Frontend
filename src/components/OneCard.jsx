@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export const OneCard = ({ id, name, logo}) => {
   return (
     <div key={id} className="col-12 col-sm-6 col-md-4 carta-cancha">
@@ -7,9 +9,9 @@ export const OneCard = ({ id, name, logo}) => {
           <h6 className="card-title">{name}</h6>
           <div className="d-flex justify-content-between align-items-center">
             <div className="btn-group"></div>
-            <a href={`/canchas/reservar/${id}`} className="text-body-secondary">
+            <Link to={`/canchas/reservar/${id}`} className="text-body-secondary">
               Reservar
-            </a>
+            </Link>
           </div>
         </div>
       </div>

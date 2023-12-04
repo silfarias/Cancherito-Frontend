@@ -24,7 +24,7 @@ function Reserva() {
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [id]);
 
   return (
     <div className="container mt-2" id="canchas-body">

@@ -8,6 +8,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { Boton } from "./Boton";
 import { Footer } from "./Footer";
+import Swal from "sweetalert2";
 
 export const FormEmpresa = () => {
 
@@ -29,7 +30,11 @@ export const FormEmpresa = () => {
         e.preventDefault();
 
         if (password !== confirmPassword) {
-            alert('Las contraseñas no coinciden');
+            Swal.fire({
+                title: "Error",
+                text: "Las contraseñas no coinciden",
+                icon: "error"
+            })
             return;
         }
 
@@ -43,16 +48,28 @@ export const FormEmpresa = () => {
             });
 
             if (!response.ok) {
-                throw new Error('Error al registrar el usuario');
+                /* throw new Error('Error al registrar el usuario'); */
+                Swal.fire({
+                    title: "Error",
+                    text: "Error al registrar el usuario",
+                    icon: "error"
+                })
             } else {
                 const data = await response.json();
-                alert(data.message);
+                /* alert(data.message); */
+                Swal.fire({
+                    title: "Registro Exitoso",
+                    icon: "success"
+                })
                 setClientId(data.clientId);
                 setRegistrationSuccess(true);
             }
         } catch (error) {
             console.error(error);
-            alert('Error al registrar el usuario');
+            Swal.fire({
+                title: "Error al registrar el usuario",
+                icon: "error"
+            })
         }
 
     }
@@ -78,10 +95,10 @@ export const FormEmpresa = () => {
             e.preventDefault();
 
 
-            if (numberCourts < 1 || !Number.isInteger(numberCourts)) {
+            /* if (numberCourts < 1 || !Number.isInteger(numberCourts)) {
                 setError("El Establecimiento debe contar con al menos una cancha!");
                 return;
-            }
+            } */
 
             
 
@@ -100,7 +117,11 @@ export const FormEmpresa = () => {
                 });
 
                 if (response.ok) {
-                    alert("Club registrado exitosamente");
+                    /* alert("Club registrado exitosamente"); */
+                    Swal.fire({
+                        title: "Club registrado exitosamente",
+                        icon: "success"
+                    })
                     navigate("/canchas");
                 } else {
                     const data = await response.json();

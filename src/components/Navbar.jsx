@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { logout } from "../apis/auth";
 import Search from "./Search";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 export const Navbar = ({handleSearch, searchTerm}) => {
   //Login
@@ -15,7 +16,7 @@ export const Navbar = ({handleSearch, searchTerm}) => {
   });
 
   const handleLogout = () => {
-    logout();
+    logout(AuthContext);
     setIsLoggedIn(false);
   }
 

@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { environments } from "../config/environments.js";
+import Swal from 'sweetalert2';
 
 export function useLogin () {
 
@@ -26,15 +27,24 @@ export function useLogin () {
                 });
 
             if (!response.ok) {
-                throw new Error('La contraseña o el email son incorrectos', error);
+                /* throw new Error('La contraseña o el email son incorrectos', error); */
+                Swal.fire({
+                    title: "Error",
+                    text: "La contraseña o el email son incorrectos",
+                    icon: "error"
+                })
             } else {
                 const data = await response.json();
-                alert(data.message);
-                dispatch({ type: 'LOGIN', payload: data.player });
-                localStorage.setItem('token', JSON.stringify(data.token));
+                Swal.fire({
+                    title: "Bienvenido",
+                    text: "Sesión iniciada",
+                    icon: "success"
+                });
                 setTimeout(() => {
                     navigate('/canchas');
-                }, 1500);
+                }, 2500)
+                dispatch({ type: 'LOGIN', payload: data.player });
+                localStorage.setItem('token', JSON.stringify(data.token));
             }
 
         } catch (error) {

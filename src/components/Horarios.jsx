@@ -4,17 +4,17 @@ import './Horarios.css'
 import BasicDatePicker from './Calendario.jsx';
 import { StyledEngineProvider } from '@mui/material/styles';
 
-const BotonReserva = ({hora})=>{
-  
+const BotonReserva = ({ hora })=>{
   const [showModal, setShowModal] = useState(false);
   const toggleModal = () => {
     setShowModal(!showModal);
   };
+
   const [verBoton, setVerBoton] = useState(false);
   const visibilidadBoton = () =>{
     setVerBoton(!verBoton); 
     setShowModal(!showModal);
-  }
+  } 
 
   return(
     <>
