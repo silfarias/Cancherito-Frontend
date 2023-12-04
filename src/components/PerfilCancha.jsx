@@ -3,15 +3,6 @@ import { environments } from "../config/environments";
 import { Link, useParams } from 'react-router-dom';
 import { Horarios } from './Horarios.jsx';
 
-//modal
-import CustomModal from './modal/Modal.jsx';
-
-//este es del calendario
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-
 function Reserva() {
   const [oneCancha, setOneCancha] = useState({});
   let { id } = useParams();
@@ -69,75 +60,5 @@ function Reserva() {
     </div>
   );
 }
-
-/* function Horarios({ numberCourts }) {
-  // MODAL 
-  const [showModal, setShowModal] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(null);
-
-  const toggleModal = () => {
-    setShowModal(!showModal);
-  };
-
-  const columns = [];
-  for (let i = 1; i <= numberCourts; i++) {
-    columns.push(
-      <td key={i}>
-        <button
-          className="btn"
-          onClick={toggleModal}>
-          17:00-18:00
-        </button>
-        <CustomModal show={showModal} onHide={toggleModal} title="Reservar Cancha">
-          ¿Estás seguro que quieres reservar de 17:00 a 18:00?
-        </CustomModal>
-      </td>
-    );
-  }
-
-  function isWithinOneWeek(date) {
-    const currentDate = new Date();
-    const eightDaysLater = new Date();
-    eightDaysLater.setDate(currentDate.getDate() + 7);
-    eightDaysLater.setHours(23, 59, 59, 999);
-    return date >= currentDate && date <= eightDaysLater;
-  }
-
-
-  return (
-    <div className="col-12" id="reserva">
-      <div className="d-flex flex-column align-items-center">
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DemoContainer components={['DatePicker']}>
-            <DatePicker 
-              label="Seleccione Fecha"
-              value={selectedDate}
-              onChange={(date) => setSelectedDate(date)}
-              filterDate={isWithinOneWeek} />
-          </DemoContainer>
-        </LocalizationProvider>
-      </div>
-
-
-      <h5>Turnos disponibles</h5>
-
-      <table className="table" id="tabla">
-        <thead>
-          <tr>
-            {columns.map((_, i) => (
-              <th key={i} scope="col">{`Cancha ${i + 1}`}</th>
-            ))}
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            {columns}
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  );
-} */
 
 export default Reserva
