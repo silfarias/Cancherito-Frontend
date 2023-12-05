@@ -27,7 +27,6 @@ export function useLogin () {
                 });
 
             if (!response.ok) {
-                /* throw new Error('La contraseña o el email son incorrectos', error); */
                 Swal.fire({
                     title: "Error",
                     text: "La contraseña o el email son incorrectos",
@@ -49,7 +48,7 @@ export function useLogin () {
 
         } catch (error) {
             console.error(error);
-            alert('La contraseña o el email son incorrectos');
+            /* alert('La contraseña o el email son incorrectos'); */
             setError('La contraseña o el email son incorrectos');
         }
     }

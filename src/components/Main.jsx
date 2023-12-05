@@ -17,7 +17,7 @@ const Centro = () => {
           <div className="col-lg-10">
             <h1 className="title">CANCHERITO</h1>
             <h3 className="subtitle">
-              Explorá las canchas disponibles en tu ciudad y reservá al instante :)
+              Explorá las canchas disponibles en tu Ciudad y reservá al instante :)
             </h3>
           </div>
 
@@ -40,7 +40,6 @@ const Centro = () => {
 const Cards = () => {
   return (
     <>
-      <Centro />
       <div className="container col-12 album py-5 bg-body-secundary" id="caja-card">
         <h4 className="text-center mb-4">Canchas Destacadas</h4>
         <div className="row justify-content-center align-items-center">
@@ -56,6 +55,7 @@ const Cards = () => {
 export const Main = () => {
   return (
     <>
+      <Centro />
       <Cards />
     </>
   )

@@ -14,6 +14,8 @@ import { OneCancha } from "../pages/one-cancha/OneCancha.jsx";
 import { PageNotFound } from "../pages/PageNotFound.jsx";
 import { PublicRoutes } from "./PublicRoutes.jsx";
 import { Empresa } from "../pages/usuarios/Empresa.jsx";
+import { SocketPage } from "../pages/Socket.jsx";
+import { PaymentAprovedPage } from "../pages/PaymentAprovedPage.jsx";
 
 
 export const AppRouter = () => {
@@ -30,7 +32,9 @@ export const AppRouter = () => {
                             <Route path="/register-empresa" element={ <Empresa />} />
                             <Route path='/canchas' element={ <Canchas />} />
                             <Route path='/canchas/reservar/:id' element={ <OneCancha />} />
+                            <Route path='/socket' element={ <SocketPage />} />
                             <Route path='*' element={<PageNotFound />} />
+                            <Route path="/mp/success" element={<PaymentAprovedPage />} />
                         </Routes>
                     </PublicRoutes>
                 } />

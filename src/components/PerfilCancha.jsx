@@ -44,14 +44,14 @@ function Reserva() {
           <div className="row" id="row-datos">
             <div className="col-3" id="logo">
               <img src={`/uploads/${oneCancha.logo}`} alt="" />
+              <div className='' id='box-ubication'>
+                <h5>Dirección</h5>
+                <p style={{ color: 'black' }}>{oneCancha.location}</p>
+              </div>
             </div>
-            <div className="col-7" id="nombre-cancha">
+            <div className="offset-1 col-7" id="nombre-cancha">
               <h4>{oneCancha.name}</h4>
               <p>{oneCancha.description}</p>
-            </div>
-            <div className='col-2'>
-              <h5 style={{ color: 'blue' }}>Ubicación</h5>
-              <p style={{ color: 'black' }}>{oneCancha.location}</p>
             </div>
           </div>
           <Horarios cantcanchas={oneCancha.number_courts} />

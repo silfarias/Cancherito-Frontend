@@ -3,7 +3,7 @@ import { useLogin } from '../hooks/useLogin.js';
 
 function Login() {
 
-    const { email, password, setEmail, setPassword, handleSubmit, error} = useLogin()
+    const { email, password, setEmail, setPassword, handleSubmit, error } = useLogin()
     
     return (
         <div className='container'>

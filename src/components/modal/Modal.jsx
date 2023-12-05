@@ -7,20 +7,22 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 function CustomModal({ show, onHide, title, reserva, children }) {
+
+  //Mercado Pago
   const [preferenceId, setPreferenceID] = useState(null);
-  const [paymentCompleted, setPaymentCompleted] = useState(false);
 
   initMercadoPago('APP_USR-1ab138b0-19e9-4432-917e-f84606db9b05');
 
   const createPreference = async () => {
     try {
       const response = await axios.post(`${environments.API_URL}/create_preference`, {
-        description: "Cancha",
+        description: "Reserva de cancha",
         price: 100,
         quantity: 1,
         currency_id: "ARS"
       });
       const { id } = response.data;
+      console.log(response)
       return id;
     } catch (error) {
       console.log(error);
@@ -28,6 +30,17 @@ function CustomModal({ show, onHide, title, reserva, children }) {
     }
   };
 
+  // Funciones de error
+  const handlePaymentError = () => {
+    Swal.fire({
+      title: 'Error',
+      text: 'Hubo un problema al procesar la reserva.',
+      icon: 'error',
+      confirmButtonText: 'OK'
+    });
+  };
+
+  // Funcion de compra
   const handleBuy = async () => {
     try {
       const id = await createPreference();
@@ -39,29 +52,6 @@ function CustomModal({ show, onHide, title, reserva, children }) {
       handlePaymentError();
     }
   };
-
-  const handlePaymentError = () => {
-    Swal.fire({
-      title: 'Error',
-      text: 'Hubo un problema al procesar la reserva.',
-      icon: 'error',
-      confirmButtonText: 'OK'
-    });
-  };
-
-  const handlePaymentSuccess = () => {
-    setPaymentCompleted(true);
-    Swal.fire({
-      title: 'Reserva exitosa',
-      text: 'La reserva se ha realizado con exito.',
-      icon: 'success',
-      confirmButtonText: 'OK'
-    })
-    reserva();
-    onHide();
-  };
-  
-
 
   return (
     <Modal show={show} onHide={onHide} dialogClassName="modal-left" backdrop="static" className='modal' centered>
@@ -76,13 +66,23 @@ function CustomModal({ show, onHide, title, reserva, children }) {
         </Modal.Body>
         <Modal.Footer>
           <button className="modal-close" onClick={onHide}>Cancelar</button>
-          <button className="submit" onClick={handleBuy}> Reservar </button>
+          <button className="submit" onClick={handleBuy}>Reservar</button>
         </Modal.Footer>
-        {preferenceId && !paymentCompleted && (
+        {preferenceId && (
           <Wallet
-          initialization={{ preferenceId }}
-          onClose={handlePaymentSuccess}
-        />
+            initialization={{ preferenceId, redirectMode: 'blank' }}
+            onSubmit={() => {
+              setTimeout(() => {
+                Swal.fire({
+                  title: 'Reserva exitosa',
+                  text: 'Gracias por tu reserva',
+                  icon: 'success',
+                  confirmButtonText: 'OK'
+                })
+              }, 10000);
+              reserva();
+            }}
+          />
         )}
       </div>
     </Modal>

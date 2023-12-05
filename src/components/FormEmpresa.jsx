@@ -133,7 +133,7 @@ export const FormEmpresa = () => {
             }
         };
         return (
-            <Form onSubmit={handleRegisterEstab} className="mt-4 border border-2 p-3 rounded rounded-3" id="wrapper">
+            <Form onSubmit={handleRegisterEstab} className="mt-4 border border-2 p-3 rounded rounded-3" id="wrapper" style={{ backgroundColor: '#cccc' }}>
                 <p className="text-center" style={{ color: '#000' }}>Información del Establecimiento</p>
                 <Row className="g-2">
                     {/* <Col md>

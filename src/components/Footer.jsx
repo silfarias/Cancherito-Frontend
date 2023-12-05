@@ -22,7 +22,7 @@ export const Footer = () => {
 
         <div className="col-md-3 col-12 text-center">
           <p>Explora Cancherito</p>
-          <a href="#"><p>Politicas de Privacidad</p></a>
+          <p>Politicas de Privacidad</p>
         </div>
 
         <div className="col-md-3 col-12 text-center">
