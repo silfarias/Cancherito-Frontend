@@ -43,6 +43,7 @@ function CustomModal({ show, onHide, title, reserva, children, idCancha }) {
 
   // Funcion de compra
   const handleBuy = async () => {
+    reserva(); 
     try {
       const id = await createPreference();
       if (id) {
@@ -71,8 +72,8 @@ function CustomModal({ show, onHide, title, reserva, children, idCancha }) {
         </Modal.Footer>
         {preferenceId && (
           <Wallet
-            initialization={{ preferenceId, redirectMode: 'blank' }}
-            onSubmit={() => {
+            initialization={{ preferenceId, redirectMode: 'modal'  }}
+            /* onSubmit={() => {
               setTimeout(() => {
                 Swal.fire({
                   title: 'Reserva exitosa',
@@ -80,9 +81,9 @@ function CustomModal({ show, onHide, title, reserva, children, idCancha }) {
                   icon: 'success',
                   confirmButtonText: 'OK'
                 })
+                reserva();
               }, 12000);
-              reserva();
-            }}
+            }} */
           />
         )}
       </div>

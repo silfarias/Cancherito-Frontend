@@ -4,7 +4,7 @@ import Search from "./Search";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
-export const Navbar = ({handleSearch, searchTerm}) => {
+export const Navbar = ({handleSearch}) => {
   //Login
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -30,7 +30,7 @@ export const Navbar = ({handleSearch, searchTerm}) => {
             </Link>
           </div>
           {/* Buscador */}
-          <Search handleSearch={handleSearch} searchTerm={searchTerm} />
+          <Search handleSearch={handleSearch} />
           <div className="d-flex col justify-content-end">
             <DropdownMenu
               isLoggedIn={isLoggedIn}

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { environments } from '../config/environments';
 import { useNavigate } from 'react-router-dom';
 import { Boton } from './Boton';
+import Swal from 'sweetalert2';
 
 export const FormUser = () => {
 
@@ -35,7 +36,12 @@ export const FormUser = () => {
                 throw new Error('Error al registrar el usuario');
             } else {
                 const data = await response.json();
-                alert(data.message);
+                /* alert(data.message); */
+                Swal.fire({
+                    title: 'Bienvenido',
+                    text: 'Registro exitoso',
+                    icon: 'success',
+                })
                 navigate('/login');
             }
         } catch (error) {

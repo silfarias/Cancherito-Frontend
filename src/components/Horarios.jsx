@@ -1,10 +1,13 @@
 import CustomModal from './modal/Modal.jsx';
-import { useState } from 'react';
+import { useCallback, useEffect, useState,  } from 'react';
 import './Horarios.css'
 import BasicDatePicker from './Calendario.jsx';
 import { StyledEngineProvider } from '@mui/material/styles';
+import { useSearchParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-const BotonReserva = ({ hora, idCancha }) => {
+
+const BotonReserva = ({ hora, idCancha, disponible, onClick }) => {
   const [showModal, setShowModal] = useState(false);
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -14,15 +17,14 @@ const BotonReserva = ({ hora, idCancha }) => {
   const visibilidadBoton = () => {
     setVerBoton(!verBoton);
     setShowModal(!showModal);
-
-  }
+  } 
 
   return (
     <>
-      <button className={`${ verBoton ? "" : "btn"} botonReserva ${verBoton ? "reservado" : ""}`} onClick={toggleModal} id='botonHorario' >
+      <button className={`${ disponible ? "btn" : ""} botonReserva ${ !disponible ? "reservado" : ""}`} onClick={toggleModal} id='botonHorario' >
         {hora}
       </button>
-      <CustomModal show={showModal} onHide={toggleModal} title="Reservar Cancha" reserva={visibilidadBoton} idCancha={idCancha}>
+      <CustomModal show={showModal} onHide={toggleModal} title="Reservar Cancha" reserva={onClick} idCancha={idCancha}>
         ¿Estas seguro que deseas reservar a las {hora} ?
       </CustomModal>
     </>
@@ -30,6 +32,8 @@ const BotonReserva = ({ hora, idCancha }) => {
 }
 
 export const Horarios = ({ cantcanchas, idCancha }) => {
+  const [ params, setParams ] = useSearchParams();
+
 
   function vectorHoras(num) {
     const arrayUnaCancha = [
@@ -71,6 +75,48 @@ export const Horarios = ({ cantcanchas, idCancha }) => {
     }
   }
   const arrayHorarios = vectorHoras(cantcanchas);
+  const [ horarios, setHorarios ] = useState(arrayHorarios);
+
+  useEffect(() => {
+    const disponibles = localStorage.getItem(idCancha) ?? 'null';
+    console.log('Disponibles', disponibles);
+    setHorarios(JSON.parse(disponibles) || arrayHorarios)
+  }, [])
+
+  useEffect(() => {
+    if (horarios == arrayHorarios) {
+      return;
+    }
+    localStorage.setItem(idCancha, JSON.stringify(horarios))
+  }, [horarios])
+
+  const handleClick = useCallback(({ filaIndex, columnaIndex }) => {
+    const nuevoHorarios = [[],[],[],[],[]];
+
+    for (let fila = 0; fila < horarios.length; fila++) {
+      for (let columna = 0; columna < horarios[fila].length; columna++) {
+        if (fila === filaIndex && columna === columnaIndex) {
+          nuevoHorarios[fila][columna] = null;
+        } else { 
+          console.log(fila, columna);
+          nuevoHorarios[fila][columna] = horarios[fila][columna];
+        }
+      }
+    }
+    console.log(nuevoHorarios);
+    setHorarios(nuevoHorarios);
+  }, [horarios]);
+
+  useEffect(() => {
+    if ( params.get('collection_status') == 'approved') {
+      Swal.fire({
+        title: 'Reserva exitosa',
+        text: 'Gracias por tu reserva',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      })
+    }
+  }, [params])
 
   return (
     <div id='contenedor-horas'>
@@ -105,7 +151,7 @@ export const Horarios = ({ cantcanchas, idCancha }) => {
               <tr key={filaIndex}>
                 {fila.map((horario, horarioIndex) => (
                   <td key={horarioIndex}>
-                    <BotonReserva hora={horario} idCancha={idCancha} />
+                    <BotonReserva hora={horario} idCancha={idCancha} onClick={() => handleClick({ filaIndex, columnaIndex: horarioIndex })} disponible={horarios[filaIndex][horarioIndex] !== null} />
                   </td>
                 ))}
               </tr>
