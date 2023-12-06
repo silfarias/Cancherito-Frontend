@@ -54,7 +54,7 @@ function Reserva() {
               <p>{oneCancha.description}</p>
             </div>
           </div>
-          <Horarios cantcanchas={oneCancha.number_courts} />
+          <Horarios cantcanchas={oneCancha.number_courts} idCancha={id} />
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import './Horarios.css'
 import BasicDatePicker from './Calendario.jsx';
 import { StyledEngineProvider } from '@mui/material/styles';
 
-const BotonReserva = ({ hora }) => {
+const BotonReserva = ({ hora, idCancha }) => {
   const [showModal, setShowModal] = useState(false);
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -22,14 +22,14 @@ const BotonReserva = ({ hora }) => {
       <button className={`${ verBoton ? "" : "btn"} botonReserva ${verBoton ? "reservado" : ""}`} onClick={toggleModal} id='botonHorario' >
         {hora}
       </button>
-      <CustomModal show={showModal} onHide={toggleModal} title="Reservar Cancha" reserva={visibilidadBoton}>
+      <CustomModal show={showModal} onHide={toggleModal} title="Reservar Cancha" reserva={visibilidadBoton} idCancha={idCancha}>
         ¿Estas seguro que deseas reservar a las {hora} ?
       </CustomModal>
     </>
   )
 }
 
-export const Horarios = ({ cantcanchas }) => {
+export const Horarios = ({ cantcanchas, idCancha }) => {
 
   function vectorHoras(num) {
     const arrayUnaCancha = [
@@ -105,7 +105,7 @@ export const Horarios = ({ cantcanchas }) => {
               <tr key={filaIndex}>
                 {fila.map((horario, horarioIndex) => (
                   <td key={horarioIndex}>
-                    <BotonReserva hora={horario} />
+                    <BotonReserva hora={horario} idCancha={idCancha} />
                   </td>
                 ))}
               </tr>

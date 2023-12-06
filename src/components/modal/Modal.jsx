@@ -6,7 +6,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-function CustomModal({ show, onHide, title, reserva, children }) {
+function CustomModal({ show, onHide, title, reserva, children, idCancha }) {
 
   //Mercado Pago
   const [preferenceId, setPreferenceID] = useState(null);
@@ -19,7 +19,8 @@ function CustomModal({ show, onHide, title, reserva, children }) {
         description: "Reserva de cancha",
         price: 100,
         quantity: 1,
-        currency_id: "ARS"
+        currency_id: "ARS",
+        num_cancha: idCancha
       });
       const { id } = response.data;
       console.log(response)
@@ -79,7 +80,7 @@ function CustomModal({ show, onHide, title, reserva, children }) {
                   icon: 'success',
                   confirmButtonText: 'OK'
                 })
-              }, 10000);
+              }, 12000);
               reserva();
             }}
           />
